@@ -1,0 +1,80 @@
+html {
+  /* font-family: "Space Grotesk", Arial, Helvetica, sans-serif; */
+  font-family: Inter;
+  color: white;
+}
+
+body {
+  margin: 0;
+  padding-top: 65px;
+  background-color: #181818;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: #222222;
+  font-size: 20px;
+  border-bottom: 1px solid rgb(50, 50, 50);
+}
+
+header > div{
+  cursor: pointer;
+}
+
+section.enter-link-section {
+  margin-top: 100px;
+  text-align: center;
+  /* justify-content: center; */
+}
+
+section.enter-link-section > p {
+  font-size: 30px;
+}
+
+section.enter-link-section > .input-and-btn-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-and-btn-div > input {
+  width: 500px;
+  padding: 10px 15px;
+  font-size: 17px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.074);
+  color: inherit;
+}
+
+.input-and-btn-div > .go-btn  {
+  font-size: 20px;
+  padding: 8px 12px;
+  background-color: rgba(255, 255, 255, 0.449);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  color: inherit;
+
+  cursor: pointer;
+}
+
+.yt-player {
+  /* hidden at first */
+  /* display: none; */
+  
+  margin-inline: auto;
+  /* text-align: center; */
+  margin-top: 40px;
+  height: 400px;
+  width: 712px;
+}
