@@ -1,6 +1,5 @@
-html {
-  /* font-family: "Space Grotesk", Arial, Helvetica, sans-serif; */
-  font-family: Inter;
+* {
+  font-family: "Space Grotesk", Arial, Helvetica, sans-serif;
   color: white;
 }
 
@@ -16,18 +15,23 @@ header {
   left: 0;
   right: 0;
   height: 65px;
+  padding-left: 30px;
   
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   
-  background-color: #222222;
-  font-size: 20px;
-  border-bottom: 1px solid rgb(50, 50, 50);
+  /* background-color: #222222; */
+  /* font-size: 20px; */
+  /* border-bottom: 1px solid rgb(50, 50, 50); */
 }
 
 header > div{
   cursor: pointer;
+  transition: opacity 0.15s;
+}
+header > div:hover {
+  opacity: 0.6;
 }
 
 section.enter-link-section {
@@ -68,13 +72,39 @@ section.enter-link-section > .input-and-btn-div {
   cursor: pointer;
 }
 
-.yt-player {
-  /* hidden at first */
-  /* display: none; */
-  
-  margin-inline: auto;
-  /* text-align: center; */
+.player-controls {
+  display: flex;
+  justify-content: center;
   margin-top: 40px;
-  height: 400px;
-  width: 712px;
+  gap: 20px;
+}
+
+.player-controls > button {
+  /* font-size: 10px; */
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.449);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  color: inherit;
+
+  cursor: pointer;
+}
+
+.yt-player {
+  display: flex;
+  justify-content: center;
+}
+
+#player {
+  margin-top: 30px;
+  height: 350px;
+  width: 622px;
+}
+
+#player.background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
