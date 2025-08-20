@@ -9,6 +9,7 @@ export default function App() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [isHidden, setIsHidden] = useState(false)
+  const [isBackground, setIsBackground] = useState(false)
 
   // derived variables
   let ytLinkId = "";
@@ -135,9 +136,10 @@ export default function App() {
         <button onClick={togglePlay}>{isPlaying ? "⏸" : "▶"}</button>
         <button onClick={toggleMute}>{isMuted ? "🔇" : "🔊"}</button>
         <button onClick={() => setIsHidden(prev => !prev)}>{isHidden ? "Unhide" : "Hide"}</button>
+        <button onClick={() => setIsBackground(prev => !prev)}>{isBackground ? "Restore Background" : "Make Background"}</button>
       </div>
 
-      <div className="yt-player" style={isHidden ? {display: "none"} : null}>
+      <div className={`player-wrapper ${isBackground ? "background" : ""}`} style={isHidden ? {display: "none"} : null}>
         <div id="player"></div>
         {/* {ytLinkId && <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${ytLinkId}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>} */}
       </div>
