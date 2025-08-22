@@ -101,7 +101,7 @@ section.enter-link-section > .input-and-btn-div {
   margin-top: 40px;
   gap: 20px;
 
-  background-color: #222222;
+  /* background-color: #222222; */
 }
 
 .player-controls > button {

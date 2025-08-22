@@ -29,7 +29,7 @@ export default function App() {
   useEffect(() => {
     if (theme==="default") setYtLink(randomVideo)
     else if (theme!=="custom") setYtLink(themesLinks[theme][currentIndex])
-  },[theme])
+  },[theme, currentIndex])
 
   // load YouTube script
   useEffect(() => {
@@ -119,6 +119,24 @@ export default function App() {
     setIsMuted(prev => !prev)
   }
 
+  function handleNextOrPrevious(event) {
+    if (event==="previous") {
+      // check if currentIndex is 0
+      if (currentIndex === 0) {
+        setCurrentIndex(themesLinks[theme].length - 1)
+      } else {
+        setCurrentIndex(prev => prev-1)
+      }
+    } else if (event==="next") {
+      // check if currentIndex is last index of current theme's array
+      if (currentIndex === themesLinks[theme].length - 1) {
+        setCurrentIndex(0)
+      } else {
+        setCurrentIndex(prev => prev+1)
+      }
+    }
+  }
+
   
   return (
   <>
@@ -149,6 +167,8 @@ export default function App() {
       <div className="player-controls">
         <button onClick={togglePlay}>{isPlaying ? "⏸" : "▶"}</button>
         <button onClick={toggleMute}>{isMuted ? "🔇" : "🔊"}</button>
+        <button onClick={() => handleNextOrPrevious("previous")}>⏮</button>
+        <button onClick={() => handleNextOrPrevious("next")}>⏭</button>
         <button onClick={() => setIsHidden(prev => !prev)}>{isHidden ? "Unhide Video" : "Hide Video"}</button>
       </div>
 
