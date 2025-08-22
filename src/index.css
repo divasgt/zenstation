@@ -52,6 +52,22 @@ header > nav > ul > li {
   padding-right: 18px;
 }
 
+.header-right-div {
+  margin-left: auto;
+}
+.header-right-div > button {
+  padding: 5px 10px;
+  background-color: transparent;
+  border: none;
+  /* background-color: rgba(239, 239, 239, 0.449);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  text-shadow: 0 0 5px rgba(0,0,0, 1); */
+
+  cursor: pointer;
+}
+
+
 section.enter-link-section {
   width: fit-content;
   text-align: center;
