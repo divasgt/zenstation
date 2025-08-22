@@ -82,8 +82,11 @@ export default function App() {
         events: {
           onReady: (event) => {
             // Sync state with player
-            setIsMuted(event.target.isMuted())
+            // setIsMuted(event.target.isMuted())
             setIsPlaying(event.target.getPlayerState() === window.YT.PlayerState.PLAYING)
+
+            // if mute button on, then start player muted
+            isMuted ? playerRef.current.mute() : null
           },
           onStateChange: (event) => {
             if (event.data === window.YT.PlayerState.PLAYING) {
