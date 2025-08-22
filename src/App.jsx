@@ -189,7 +189,7 @@ export default function App() {
           <button onClick={toggleMute}>{isMuted ? "🔇" : "🔊"}</button>
           <button onClick={() => handleNextOrPrevious("previous")}>⏮</button>
           <button onClick={() => handleNextOrPrevious("next")}>⏭</button>
-          <button onClick={() => setIsHidden(prev => !prev)}>{isHidden ? "Unhide Video" : "Hide Video"}</button>
+          <button onClick={() => setIsHidden(prev => !prev)}>{isHidden ? "🎥 Video Mode" : "🎵 Audio Mode"}</button>
         </div>
         <div className="video-title">
           <span>Now Playing: </span>
