@@ -13,6 +13,7 @@ export default function App() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [isHidden, setIsHidden] = useState(false)
+  const [videoTitle, setVideoTitle] = useState("")
 
 
   // derived variables
@@ -22,8 +23,22 @@ export default function App() {
   } else if (ytLink.includes(".be/")) {
     ytLinkId = ytLink.split(".be/")[1].substring(0,11)
   }
-  console.log(ytLinkId)
+  // console.log(ytLinkId)
 
+  // for fetching yt video title
+  useEffect(() => {
+    async function fetchVideoTitle(videoId) {
+      const url = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`;
+      const response = await fetch(url);
+      const data = await response.json();
+      return data.title;
+    }
+
+    fetchVideoTitle(ytLinkId).then(title => {
+      // console.log("Video Title:", title);
+      setVideoTitle(title)
+    });
+  }, [ytLinkId])
 
   // change ytLink when theme changes
   useEffect(() => {
@@ -59,6 +74,10 @@ export default function App() {
         playerVars: {
           autoplay: 1,
           controls: 0,
+          loop: 1,
+          rel: 0,
+          iv_load_policy: 3,
+          fs: 0,
         },
         events: {
           onReady: (event) => {
@@ -155,7 +174,7 @@ export default function App() {
           />
           <button className="go-btn" onClick={() => {
             setYtLink(inputText)
-            console.log(ytLink)
+            // console.log(ytLink)
           }}>
           Go</button>
         </div>
@@ -164,12 +183,17 @@ export default function App() {
 
     {ytLinkId && (
     <>
-      <div className="player-controls">
-        <button onClick={togglePlay}>{isPlaying ? "⏸" : "▶"}</button>
-        <button onClick={toggleMute}>{isMuted ? "🔇" : "🔊"}</button>
-        <button onClick={() => handleNextOrPrevious("previous")}>⏮</button>
-        <button onClick={() => handleNextOrPrevious("next")}>⏭</button>
-        <button onClick={() => setIsHidden(prev => !prev)}>{isHidden ? "Unhide Video" : "Hide Video"}</button>
+      <div className="player-info-and-controls">
+        <div className="player-controls">
+          <button onClick={togglePlay}>{isPlaying ? "⏸" : "▶"}</button>
+          <button onClick={toggleMute}>{isMuted ? "🔇" : "🔊"}</button>
+          <button onClick={() => handleNextOrPrevious("previous")}>⏮</button>
+          <button onClick={() => handleNextOrPrevious("next")}>⏭</button>
+          <button onClick={() => setIsHidden(prev => !prev)}>{isHidden ? "Unhide Video" : "Hide Video"}</button>
+        </div>
+        <div className="video-title">
+          <span>Now Playing: </span>
+          {videoTitle}</div>
       </div>
 
       <div className="player-wrapper" style={isHidden ? {display: "none"} : null}>
