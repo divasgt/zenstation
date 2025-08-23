@@ -28,7 +28,7 @@ export default function Header({ setTheme, setIsCustomTheme, setIsPomodoroShown,
         <li><button onClick={() => handleThemeClick("relax")}>Relax</button></li>
 
         {/* on clicking below button, pause video if playing and show entering link popup */}
-        <li><button onClick={() => setIsCustomTheme(prev => !prev)}>Create my vibe</button></li>
+        <li><button onClick={() => setIsCustomTheme(prev => !prev)}>Create my theme</button></li>
       </ul>
     </nav>
 
