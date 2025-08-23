@@ -266,6 +266,18 @@ img.fullscreen-img {
   pointer-events: none;
 }
 
+.player-wrapper iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw; /* 16:9 ratio of width */
+  min-width: 177.78vh; /* 16:9 ratio of height */
+  min-height: 100vh;
+  transform: translate(-50%, -50%);
+}
+
+
 
 .pomodoro-div {
   position: fixed;
