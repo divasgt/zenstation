@@ -8,13 +8,13 @@ body {
   padding: 0;
   padding-top: 55px;
   /* background-color: #2e2e2e; */
-  background-image: url(./assets/night-sky-stars1.jpg);
+  /* background-image: url(./assets/night-sky-stars1.jpg); */
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
 
-  /* background: linear-gradient(#3964ff, #3a3a3a) !important; */
+  /* background: linear-gradient(#2554ff, rgba(0, 0, 0, 0.511)) !important; */
   height: calc(100vh - 55px);
   margin: 0;
 }

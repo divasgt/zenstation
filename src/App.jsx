@@ -3,6 +3,7 @@ import Header from "./components/Header"
 import themesLinks from "./themes";
 import Pomodoro from "./components/pomodoro";
 import TodoList from "./components/TodoList";
+import homepageBgImage from "./assets/night-sky-stars1.jpg" 
 
 export default function App() {
   const [theme, setTheme] = useState("default")
@@ -124,7 +125,7 @@ export default function App() {
 
 
   useEffect(() => {
-    // if (!customBg) document.body.style.backgroundImage="unset"
+    if (!customBg) document.body.style.backgroundImage=`url(${homepageBgImage})`
     if (customBg) document.body.style.backgroundImage=`url(${customBg})`
   }, [customBg])
 
