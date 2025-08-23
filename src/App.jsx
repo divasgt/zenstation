@@ -199,8 +199,8 @@ export default function App() {
           {videoTitle}</div>
       </div>
 
-      <div className="player-wrapper" style={isHidden ? {display: "none"} : null}>
-        <div id="player"></div>
+      <div className="player-wrapper" tabIndex={-1} style={isHidden ? {display: "none"} : null}>
+        <div tabIndex={-1} id="player"></div>
         {/* {ytLinkId && <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${ytLinkId}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>} */}
       </div>
     </>
