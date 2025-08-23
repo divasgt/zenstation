@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function Header({ setTheme, setIsCustomTheme, setIsPomodoroShown }) {
+export default function Header({ setTheme, setIsCustomTheme, setIsPomodoroShown, setCurrentIndex }) {
   const [isFullScreen, setIsFullScreen] = useState(false)
 
   function toggleFullScreen() {
@@ -11,16 +11,21 @@ export default function Header({ setTheme, setIsCustomTheme, setIsPomodoroShown 
     }
     setIsFullScreen(prev => !prev)
   }
+
+  function handleThemeClick(text) {
+    setTheme(text.toLowerCase())
+    setCurrentIndex(0)
+  }
   
   return (
   <header>
     <nav>
       <ul>
         <li><button className="home-nav-link" onClick={() => setTheme("default")}>😎</button></li>
-        <li><button onClick={() => setTheme("lofi")}>Lofi</button></li>
-        <li><button onClick={() => setTheme("cafe")}>Cafe</button></li>
-        <li><button onClick={() => setTheme("library")}>Library</button></li>
-        <li><button onClick={() => setTheme("relax")}>Relax</button></li>
+        <li><button onClick={() => handleThemeClick("lofi")}>Lofi</button></li>
+        <li><button onClick={() => handleThemeClick("cafe")}>Cafe</button></li>
+        <li><button onClick={() => handleThemeClick("library")}>Library</button></li>
+        <li><button onClick={() => handleThemeClick("relax")}>Relax</button></li>
 
         {/* on clicking below button, pause video if playing and show entering link popup */}
         <li><button onClick={() => setIsCustomTheme(prev => !prev)}>Create my vibe</button></li>

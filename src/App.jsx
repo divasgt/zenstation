@@ -176,7 +176,7 @@ export default function App() {
   
   return (
   <>
-    <Header setTheme={setTheme} setIsCustomTheme={setIsCustomTheme} setIsPomodoroShown={setIsPomodoroShown} />
+    <Header setTheme={setTheme} setIsCustomTheme={setIsCustomTheme} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} />
 
     <Pomodoro isPomodoroShown={isPomodoroShown} />
 
