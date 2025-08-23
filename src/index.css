@@ -202,6 +202,12 @@ section.custom-theme-section > .input-and-btn-div {
   gap: 20px;
   /* background-color: blue; */
 }
+.player-controls > button:hover {
+  transition: opacity 0.1s ease;
+}
+.player-controls > button:hover {
+  opacity: 0.7;
+}
 
 .player-info-and-controls > .video-title {
   font-weight: 500;
