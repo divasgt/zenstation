@@ -28,15 +28,25 @@ export default function Header({ setTheme, setIsCustomTheme, setIsPomodoroShown 
     </nav>
 
     <div className="header-right-div">
+
+      <button className="todo-list-btn">
+        <img src="https://img.icons8.com/?size=100&id=11266&format=png&color=ffffff" alt="todo-list" />
+      </button>
+      <div className="tooltip todo-list-tooltip">Todo List</div>
       
-      <button className="pomodoro-clock-btn" onClick={() => setIsPomodoroShown(prev => !prev)}>
+      <button className="pomodoro-btn" onClick={() => setIsPomodoroShown(prev => !prev)}>
         <img className="pomodoro-clock-img" src="https://img.icons8.com/?size=100&id=16153&format=png&color=ffffff" alt="pomodoro-clock-icon" />
       </button>
+      <div className="tooltip pomodoro-tooltip">Pomodoro Timer</div>
+
       <button onClick={toggleFullScreen} className="fullscreen-btn">
-        {/* <img src="https://img.icons8.com/?size=100&id=98066&format=png&color=ffffff" alt="fullscreen-icon" style={{width: "20px", marginTop: "2px"}} /> */}
-        {/* <img src="https://img.icons8.com/?size=100&id=hafLDNJlLQnR&format=png&color=ffffff" alt="" style={{width: "22px", marginTop: "2px"}} /> */}
         <img className="fullscreen-img" src="https://img.icons8.com/?size=100&id=ljlb4da7psfA&format=png&color=ffffff" alt="fullscreen-icon" />
       </button>
+      <div className="tooltip fullscreen-tooltip">Fullscreen</div>
+
+      <button className="about-btn">❤</button>
+      <div className="tooltip about-tooltip">About</div>
+      
     </div>
   </header>
   )
