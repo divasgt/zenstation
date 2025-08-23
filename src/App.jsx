@@ -124,7 +124,7 @@ export default function App() {
 
 
   useEffect(() => {
-    if (!customBg) document.body.style.backgroundImage="none"
+    // if (!customBg) document.body.style.backgroundImage="unset"
     if (customBg) document.body.style.backgroundImage=`url(${customBg})`
   }, [customBg])
 
@@ -184,9 +184,11 @@ export default function App() {
     <TodoList isTodoListShown={isTodoListShown} />
 
     {theme==="default" && 
-    <>
+    <div className="homepage-info-div">
       <h1><span style={{textShadow: "none"}}>🌌</span> Chill Space</h1>
-    </>
+      <p>Your space to focus, relax, stay productive or just chill</p>
+      <p>Choose from many themes above or create your theme</p>
+    </div>
     }
     
     {isCustomTheme && (
