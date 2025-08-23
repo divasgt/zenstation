@@ -98,6 +98,24 @@ header button:hover {
   background-color: transparent;
   border: none;
   cursor: pointer;
+
+  position: relative;
+  display: inline-block;
+}
+.header-right-div > button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  /* background: rgba(0, 0, 0, 0.2);  */
+  background-color: transparent;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+
+  box-shadow: 0 0 15px rgba(0,0,0,1);
 }
 .header-right-div img {
   width: 20px;
