@@ -6,11 +6,28 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #2e2e2e;
-  background-repeat: no-repeat;
+  padding-top: 55px;
+  /* background-color: #2e2e2e; */
+  /* background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: fixed; */
+
+  background: linear-gradient(#fcb66c, #ff6e4a) !important;
+  height: calc(100vh - 55px);
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: 80px;
+  position: fixed;
+  width: max-content;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 0 0 5px rgba(0,0,0, 1), 
+               0 0 10px rgba(0,0,0, 0.7);
 }
 
 header {

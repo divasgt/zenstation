@@ -180,6 +180,8 @@ export default function App() {
 
     <Pomodoro isPomodoroShown={isPomodoroShown} />
 
+    {theme==="default" && <h1>😎 Chill Website</h1>}
+    
     {isCustomTheme && (
       <section className="custom-theme-section">
         <button className="close-btn" onClick={() => setIsCustomTheme(prev => !prev)} >
