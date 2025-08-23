@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Header from "./components/Header"
 import themesLinks from "./themes";
+import Pomodoro from "./components/pomodoro";
 
 export default function App() {
   const [theme, setTheme] = useState("default")
@@ -8,12 +9,16 @@ export default function App() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [inputText, setInputText] = useState("")
   const [ytLink, setYtLink] = useState(randomVideo)
+  const [customBg, setCustomBg] = useState(null)
+  const customBgInputRef = useRef(null)
 
   const playerRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [isHidden, setIsHidden] = useState(false)
   const [videoTitle, setVideoTitle] = useState("")
+
+  const [isPomodoroShown, setIsPomodoroShown] = useState(false)
 
 
   // derived variables
@@ -116,6 +121,12 @@ export default function App() {
   },[theme, currentIndex])
 
 
+  useEffect(() => {
+    if (!customBg) document.body.style.backgroundImage="none"
+    if (customBg) document.body.style.backgroundImage=`url(${customBg})`
+  }, [customBg])
+
+
   function randomVideo() {
     return ""
   }
@@ -165,13 +176,17 @@ export default function App() {
   
   return (
   <>
-    <Header theme={theme} setTheme={setTheme} setIsCustomTheme={setIsCustomTheme} />
+    <Header setTheme={setTheme} setIsCustomTheme={setIsCustomTheme} setIsPomodoroShown={setIsPomodoroShown} />
+
+    <Pomodoro isPomodoroShown={isPomodoroShown} />
 
     {isCustomTheme && (
-      <section className="enter-link-section">
-        <button onClick={() => setIsCustomTheme(prev => !prev)} className="close-btn"><img src="https://img.icons8.com/?size=100&id=83149&format=png&color=ffffff" alt="close-icon" style={{width: "18px"}} /></button>
+      <section className="custom-theme-section">
+        <button className="close-btn" onClick={() => setIsCustomTheme(prev => !prev)} >
+          <img src="https://img.icons8.com/?size=100&id=83149&format=png&color=ffffff" alt="close-icon" style={{width: "18px"}} />
+        </button>
 
-        <p>Enter any Youtube video link</p>
+        <p>Enter any youtube video link</p>
 
         <div className="input-and-btn-div">
           <input type="text" placeholder="Enter a youtube link" value={inputText}
@@ -180,12 +195,35 @@ export default function App() {
               e.key==="Enter" ? setYtLink(inputText) : null
             }}
           />
-          <button className="go-btn" onClick={() => {
-            setYtLink(inputText)
-            // console.log(ytLink)
-          }}>
-          Go</button>
+          <button className="go-btn" onClick={() => setYtLink(inputText)}>
+            Go
+          </button>
         </div>
+
+        <p>Upload Custom background Image</p>
+
+        <div className="bg-upload-div">
+          <input ref={customBgInputRef} type="file" name="custom-bg-input" id="custom-bg-input" accept="image/*" onChange={event => {
+            const fileReader = new FileReader()
+            fileReader.readAsDataURL(event.target.files[0])
+            // when reading as data url is complete, the onload event is triggered, and fileReader.result contains the dataURL
+
+            // onload property should be assigned a function, it itself should not be called by ()
+            fileReader.onload = () => {
+              setCustomBg(fileReader.result)
+              // also hide playing video
+              setIsHidden(true)
+            }
+          }}/>
+          <button className="reset-bg-btn" onClick={() => {
+            setCustomBg("")
+            setIsHidden(false)
+            customBgInputRef.current.value = ""
+          }}>Reset Background</button>
+
+        </div>
+        {/* <p>or Enter image link</p>
+        <input type="text" /> */}
       </section>
     )}
 
