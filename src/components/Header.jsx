@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function Header({theme, setTheme, setIsCustomTheme}) {
+export default function Header({ setTheme, setIsCustomTheme, setIsPomodoroShown }) {
   const [isFullScreen, setIsFullScreen] = useState(false)
 
   function toggleFullScreen() {
@@ -28,6 +28,10 @@ export default function Header({theme, setTheme, setIsCustomTheme}) {
     </nav>
 
     <div className="header-right-div">
+      
+      <button className="pomodoro-clock-btn" onClick={() => setIsPomodoroShown(prev => !prev)}>
+        <img className="pomodoro-clock-img" src="https://img.icons8.com/?size=100&id=16153&format=png&color=ffffff" alt="pomodoro-clock-icon" />
+      </button>
       <button onClick={toggleFullScreen} className="fullscreen-btn">
         {/* <img src="https://img.icons8.com/?size=100&id=98066&format=png&color=ffffff" alt="fullscreen-icon" style={{width: "20px", marginTop: "2px"}} /> */}
         {/* <img src="https://img.icons8.com/?size=100&id=hafLDNJlLQnR&format=png&color=ffffff" alt="" style={{width: "22px", marginTop: "2px"}} /> */}

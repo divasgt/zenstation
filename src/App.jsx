@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Header from "./components/Header"
 import themesLinks from "./themes";
+import Pomodoro from "./components/pomodoro";
 
 export default function App() {
   const [theme, setTheme] = useState("default")
@@ -16,6 +17,8 @@ export default function App() {
   const [isMuted, setIsMuted] = useState(false)
   const [isHidden, setIsHidden] = useState(false)
   const [videoTitle, setVideoTitle] = useState("")
+
+  const [isPomodoroShown, setIsPomodoroShown] = useState(false)
 
 
   // derived variables
@@ -173,7 +176,9 @@ export default function App() {
   
   return (
   <>
-    <Header theme={theme} setTheme={setTheme} setIsCustomTheme={setIsCustomTheme} />
+    <Header setTheme={setTheme} setIsCustomTheme={setIsCustomTheme} setIsPomodoroShown={setIsPomodoroShown} />
+
+    <Pomodoro isPomodoroShown={isPomodoroShown} />
 
     {isCustomTheme && (
       <section className="custom-theme-section">
@@ -210,7 +215,7 @@ export default function App() {
               setIsHidden(true)
             }
           }}/>
-          <button onClick={() => {
+          <button className="reset-bg-btn" onClick={() => {
             setCustomBg("")
             setIsHidden(false)
             customBgInputRef.current.value = ""
