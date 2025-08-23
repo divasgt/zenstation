@@ -40,11 +40,6 @@ export default function App() {
     });
   }, [ytLinkId])
 
-  // change ytLink when theme changes
-  useEffect(() => {
-    if (theme==="default") setYtLink(randomVideo)
-    else if (theme!=="custom") setYtLink(themesLinks[theme][currentIndex])
-  },[theme, currentIndex])
 
   // load YouTube script
   useEffect(() => {
@@ -113,6 +108,14 @@ export default function App() {
     }
   }, [ytLinkId])
 
+  
+  // change ytLink when theme changes
+  useEffect(() => {
+    if (theme==="default") setYtLink(randomVideo)
+    else if (theme!=="custom") setYtLink(themesLinks[theme][currentIndex])
+  },[theme, currentIndex])
+
+
   function randomVideo() {
     return ""
   }
@@ -166,6 +169,8 @@ export default function App() {
 
     {isCustomTheme && (
       <section className="enter-link-section">
+        <button onClick={() => setIsCustomTheme(prev => !prev)} className="close-btn"><img src="https://img.icons8.com/?size=100&id=83149&format=png&color=ffffff" alt="close-icon" style={{width: "18px"}} /></button>
+
         <p>Enter any Youtube video link</p>
 
         <div className="input-and-btn-div">
