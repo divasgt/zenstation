@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Header from "./components/Header"
 import themesLinks from "./themes";
 import Pomodoro from "./components/pomodoro";
+import TodoList from "./components/TodoList";
 
 export default function App() {
   const [theme, setTheme] = useState("default")
@@ -19,6 +20,7 @@ export default function App() {
   const [videoTitle, setVideoTitle] = useState("")
 
   const [isPomodoroShown, setIsPomodoroShown] = useState(false)
+  const [isTodoListShown, setIsTodoListShown] = useState(false)
 
 
   // derived variables
@@ -176,9 +178,10 @@ export default function App() {
   
   return (
   <>
-    <Header setTheme={setTheme} setIsCustomTheme={setIsCustomTheme} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} />
+    <Header setTheme={setTheme} setIsCustomTheme={setIsCustomTheme} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
 
     <Pomodoro isPomodoroShown={isPomodoroShown} />
+    <TodoList isTodoListShown={isTodoListShown} />
 
     {theme==="default" && <h1>😎 Chill Website</h1>}
     

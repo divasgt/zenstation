@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function Header({ setTheme, setIsCustomTheme, setIsPomodoroShown, setCurrentIndex }) {
+export default function Header({ setTheme, setIsCustomTheme, setIsPomodoroShown, setIsTodoListShown, setCurrentIndex }) {
   const [isFullScreen, setIsFullScreen] = useState(false)
 
   function toggleFullScreen() {
@@ -34,7 +34,7 @@ export default function Header({ setTheme, setIsCustomTheme, setIsPomodoroShown,
 
     <div className="header-right-div">
 
-      <button className="todo-list-btn">
+      <button className="todo-list-btn" onClick={() => setIsTodoListShown(prev => !prev)}>
         <img src="https://img.icons8.com/?size=100&id=11266&format=png&color=ffffff" alt="todo-list" />
       </button>
       <div className="tooltip todo-list-tooltip">Todo List</div>
