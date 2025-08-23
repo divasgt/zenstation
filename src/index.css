@@ -40,7 +40,10 @@ header > nav > ul{
   padding: 0;
 }
 
-header > nav > ul > li {
+header > nav > ul > li > button {
+  background-color: transparent;
+  border: none;
+  font-size: inherit;
   cursor: pointer;
   text-shadow: 0 0 5px rgba(0,0,0, 1), 
                0 0 10px rgba(0,0,0, 0.7);
@@ -54,18 +57,27 @@ header > nav > ul > li {
 
 .header-right-div {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 .header-right-div > button {
-  padding: 5px 10px;
   background-color: transparent;
   border: none;
-  /* background-color: rgba(239, 239, 239, 0.449);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-  text-shadow: 0 0 5px rgba(0,0,0, 1); */
-
   cursor: pointer;
 }
+.header-right-div img {
+  width: 20px;
+}
+img.fullscreen-img {
+  width: 15px;
+}
+
+.about-btn {
+  font-size: 14px;
+  margin-left: ;
+}
+
 
 
 section.enter-link-section {
