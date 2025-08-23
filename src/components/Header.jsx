@@ -21,7 +21,7 @@ export default function Header({ setTheme, setIsCustomTheme, setIsPomodoroShown,
   <header>
     <nav>
       <ul>
-        <li><button className="home-nav-link" onClick={() => setTheme("default")}>😎</button></li>
+        <li><button className="home-nav-link" onClick={() => setTheme("default")}>🌌</button></li>
         <li><button onClick={() => handleThemeClick("lofi")}>Lofi</button></li>
         <li><button onClick={() => handleThemeClick("cafe")}>Cafe</button></li>
         <li><button onClick={() => handleThemeClick("library")}>Library</button></li>

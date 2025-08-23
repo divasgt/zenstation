@@ -183,7 +183,11 @@ export default function App() {
     <Pomodoro isPomodoroShown={isPomodoroShown} />
     <TodoList isTodoListShown={isTodoListShown} />
 
-    {theme==="default" && <h1>😎 Chill Space</h1>}
+    {theme==="default" && 
+    <>
+      <h1><span style={{textShadow: "none"}}>🌌</span> Chill Space</h1>
+    </>
+    }
     
     {isCustomTheme && (
       <section className="custom-theme-section">

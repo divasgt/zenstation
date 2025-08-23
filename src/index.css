@@ -13,7 +13,7 @@ body {
   background-size: cover;
   background-attachment: fixed; */
 
-  background: linear-gradient(#fcb66c, #ff6e4a) !important;
+  background: linear-gradient(#3964ff, #67f0ff) !important;
   height: calc(100vh - 55px);
   margin: 0;
 }
@@ -69,8 +69,7 @@ header > nav > ul > li > button {
   border: none;
   font-size: inherit;
   cursor: pointer;
-  text-shadow: 0 0 5px rgba(0,0,0, 1), 
-               0 0 10px rgba(0,0,0, 0.7);
+  text-shadow: 0 0 5px rgba(0,0,0, 1);
 }
 
 header button {
@@ -82,8 +81,10 @@ header button:hover {
 }
 
 .home-nav-link {
+  text-shadow: none;
+  font-size: 18px;
   padding-left: 16px;
-  padding-right: 18px;
+  padding-right: 12px;
 }
 
 .header-right-div {
