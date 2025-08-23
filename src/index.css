@@ -11,11 +11,13 @@ body {
 
 header {
   position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0;
-  height: 55px;
+  top: 6px;
+  left: 15px;
+  right: 15px;
+  height: 0;
+  padding-block: 24px;
   padding-inline: 30px;
+  border-radius: 6px;
   
   display:flex;
   align-items: center;
@@ -28,7 +30,7 @@ header {
   /* blur effect styles */
   /* background-color: rgba(255,255,255,0.1); */
   background-color: rgba(0,0,0, 0.05);
-  border-bottom: 1px solid rgba(255,255,255, 0.2);
+  border: 1px solid rgba(255,255,255, 0.2);
   backdrop-filter: blur(20px);
 
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
@@ -156,19 +158,16 @@ section.enter-link-section > .input-and-btn-div {
   display: flex;
   flex-direction: column;
   position: fixed;
-  left: 0;
-  bottom: 0;
+  left: 15px;
+  bottom: 10px;
   padding: 20px 25px;
   gap: 10px;
-  /* background-color: #22222290; */
-  border-top-right-radius: 6px;
-  /* border-top: 2px solid rgba(127, 127, 127, 0.5); */
-  /* border-right: 2px solid rgba(127, 127, 127, 0.5); */
+  border-radius: 6px;
 
   /* blur effect styles */
   background-color: rgba(0,0,0, 0.05);
-  border-top: 1px solid rgba(255,255,255, 0.2);
-  border-right: 1px solid rgba(255,255,255, 0.2);
+  /* border-top: 1px solid rgba(255,255,255, 0.2); */
+  border: 1px solid rgba(255,255,255, 0.2);
   backdrop-filter: blur(20px);
 
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
