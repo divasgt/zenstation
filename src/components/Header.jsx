@@ -4,7 +4,7 @@ export default function Header({ setTheme, setIsCustomTheme, setIsPomodoroShown,
   const [isFullScreen, setIsFullScreen] = useState(false)
 
   function toggleFullScreen() {
-    if (isFullScreen) {
+    if (!isFullScreen) {
       document.documentElement.requestFullscreen()
     } else {
       document.exitFullscreen()  
@@ -45,7 +45,13 @@ export default function Header({ setTheme, setIsCustomTheme, setIsPomodoroShown,
       <div className="tooltip pomodoro-tooltip">Pomodoro Timer</div>
 
       <button onClick={toggleFullScreen} className="fullscreen-btn">
-        <img className="fullscreen-img" src="https://img.icons8.com/?size=100&id=ljlb4da7psfA&format=png&color=ffffff" alt="fullscreen-icon" />
+        {isFullScreen ?
+          <img src="https://img.icons8.com/material-outlined/24/FFFFFF/compress.png" alt="compress"/> :
+          <img className="fullscreen-img" src="https://img.icons8.com/forma-regular-sharp/24/FFFFFF/decompress.png" alt="decompress"/>
+          // <img src="https://img.icons8.com/sf-regular/48/FFFFFF/expand.png" alt="expand"/>
+          // <img style={{width: "15px"}} className="fullscreen-img" src="https://img.icons8.com/?size=100&id=ljlb4da7psfA&format=png&color=ffffff" alt="fullscreen-icon" />
+          // <img className="fullscreen-img" src="https://img.icons8.com/material-outlined/24/FFFFFF/full-screen--v1.png" alt="full-screen--v1"/>
+        }
       </button>
       <div className="tooltip fullscreen-tooltip">Fullscreen</div>
 
