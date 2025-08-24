@@ -14,7 +14,8 @@ body {
   background-size: cover;
   background-attachment: fixed;
 
-  background: linear-gradient(#2554ff, rgba(0, 0, 0, 0.511)) !important;
+  background: linear-gradient(rgba(103, 61, 152, 0.643), rgb(78, 86, 161)) !important;
+  /* background: linear-gradient(#3d4f98a4, rgb(67, 77, 164)) !important; */
   height: calc(100vh - 55px);
   margin: 0;
 }
