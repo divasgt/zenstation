@@ -197,6 +197,10 @@ img.fullscreen-img {
   outline: none;
 }
 
+input[type="text"]::placeholder {
+  color: rgba(255, 255, 255, 0.5)
+}
+
 .input-and-btn-div > .go-btn  {
   font-size: 17px;
   padding: 8px 10px;
