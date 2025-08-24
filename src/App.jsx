@@ -125,7 +125,7 @@ export default function App() {
 
 
   useEffect(() => {
-    if (!customBg) document.body.style.backgroundImage=`url(${homepageBgImage})`
+    if (!customBg) document.body.style.backgroundImage=``
     if (customBg) document.body.style.backgroundImage=`url(${customBg})`
   }, [customBg])
 
@@ -192,12 +192,13 @@ export default function App() {
     </div>
     }
     
-    {isCustomTheme && (
-      <section className="custom-theme-section">
-        <button className="close-btn" onClick={() => setIsCustomTheme(prev => !prev)} >
-          <img src="https://img.icons8.com/?size=100&id=83149&format=png&color=ffffff" alt="close-icon" style={{width: "18px"}} />
-        </button>
+    {isCustomTheme &&
+    <section className="custom-theme-section">
+      <button className="close-btn" onClick={() => setIsCustomTheme(prev => !prev)} >
+        <img src="https://img.icons8.com/?size=100&id=83149&format=png&color=ffffff" alt="close-icon" style={{width: "18px"}} />
+      </button>
 
+      <div className="yt-link-div">
         <p>Enter any youtube video link</p>
 
         <div className="input-and-btn-div">
@@ -211,10 +212,12 @@ export default function App() {
             Go
           </button>
         </div>
+      </div>
 
+      <div className="custom-bg-div">
         <p>Upload Custom background Image</p>
 
-        <div className="bg-upload-div">
+        <div className="input-and-btn-div">
           <input ref={customBgInputRef} type="file" name="custom-bg-input" id="custom-bg-input" accept="image/*" onChange={event => {
             const fileReader = new FileReader()
             fileReader.readAsDataURL(event.target.files[0])
@@ -227,17 +230,20 @@ export default function App() {
               setIsHidden(true)
             }
           }}/>
+
+          {customBg &&
           <button className="reset-bg-btn" onClick={() => {
             setCustomBg("")
             setIsHidden(false)
             customBgInputRef.current.value = ""
           }}>Reset Background</button>
-
+          }
         </div>
-        {/* <p>or Enter image link</p>
-        <input type="text" /> */}
-      </section>
-    )}
+      </div>
+      {/* <p>or Enter image link</p>
+      <input type="text" /> */}
+    </section>
+    }
 
     {ytLinkId && (
     <>
