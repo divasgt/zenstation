@@ -201,7 +201,7 @@ export default function App() {
 
 
     
-    <Header setTheme={setTheme} setIsCustomTheme={setIsCustomTheme} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
+    <Header setTheme={setTheme} setShowCustomThemeSection={setShowCustomThemeSection} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
     <Header setTheme={setTheme} setShowCustomThemeSection={setShowCustomThemeSection} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
 
     <Pomodoro isPomodoroShown={isPomodoroShown} />
