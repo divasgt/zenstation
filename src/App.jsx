@@ -7,7 +7,7 @@ import homepageBgImage from "./assets/night-sky-stars1.jpg"
 
 export default function App() {
   const [theme, setTheme] = useState("default")
-  const [isCustomTheme, setIsCustomTheme] = useState(false)
+  const [showCustomThemeSection, setShowCustomThemeSection] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [inputText, setInputText] = useState("")
   const [ytLink, setYtLink] = useState(randomVideo)
@@ -119,7 +119,10 @@ export default function App() {
   
   // change ytLink when theme changes
   useEffect(() => {
-    if (theme==="default") setYtLink(randomVideo)
+    if (theme==="default") {
+      setYtLink(randomVideo)
+      ytLinkId = 0
+    }
     else if (theme!=="custom") setYtLink(themesLinks[theme][currentIndex])
   },[theme, currentIndex])
 
@@ -179,12 +182,12 @@ export default function App() {
   
   return (
   <>
-    <Header setTheme={setTheme} setIsCustomTheme={setIsCustomTheme} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
+    <Header setTheme={setTheme} setShowCustomThemeSection={setShowCustomThemeSection} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
 
     <Pomodoro isPomodoroShown={isPomodoroShown} />
     <TodoList isTodoListShown={isTodoListShown} />
 
-    {theme==="default" && 
+    {!ytLinkId && 
     <div className="homepage-info-div">
       <h1><span style={{textShadow: "none"}}>🌌</span> Chill Space</h1>
       <p>Your space to focus, study, work, relax, or just chill</p>
@@ -192,9 +195,9 @@ export default function App() {
     </div>
     }
     
-    {isCustomTheme &&
+    {showCustomThemeSection &&
     <section className="custom-theme-section">
-      <button className="close-btn" onClick={() => setIsCustomTheme(prev => !prev)} >
+      <button className="close-btn" onClick={() => setShowCustomThemeSection(prev => !prev)} >
         <img src="https://img.icons8.com/?size=100&id=83149&format=png&color=ffffff" alt="close-icon" style={{width: "18px"}} />
       </button>
 
