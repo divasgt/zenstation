@@ -3,7 +3,8 @@ import Header from "./components/Header"
 import themesLinks from "./themes";
 import Pomodoro from "./components/pomodoro";
 import TodoList from "./components/TodoList";
-import homepageBgImage from "./assets/night-sky-stars1.jpg" 
+import homepageBgImage from "./assets/night-sky-stars1.jpg"
+import "./aurora.css"
 
 export default function App() {
   const [theme, setTheme] = useState("default")
@@ -179,6 +180,14 @@ export default function App() {
   
   return (
   <>
+  <div className="background-div">
+    <div className="aurora-bg" style={{
+      backgroundImage: `radial-gradient(circle 500px at 50% 100px, rgba(139,92,246,0.4), transparent)`,
+    }}></div>
+
+
+
+    
     <Header setTheme={setTheme} setIsCustomTheme={setIsCustomTheme} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
 
     <Pomodoro isPomodoroShown={isPomodoroShown} />
@@ -266,6 +275,7 @@ export default function App() {
       </div>
     </>
     )}
+  </div>
   </>  
   )
 }
