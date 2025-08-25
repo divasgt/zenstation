@@ -125,10 +125,10 @@ export default function App() {
   },[theme, currentIndex])
 
 
-  useEffect(() => {
-    if (!customBg) document.body.style.backgroundImage=``
-    if (customBg) document.body.style.backgroundImage=`url(${customBg})`
-  }, [customBg])
+  // useEffect(() => {
+  //   if (!customBg) document.body.style.backgroundImage=``
+  //   if (customBg) document.body.style.backgroundImage=`url(${customBg})`
+  // }, [customBg])
 
 
   function randomVideo() {
@@ -180,10 +180,20 @@ export default function App() {
   
   return (
   <>
-  <div className="background-div">
-    <div className="aurora-bg" style={{
-      backgroundImage: `radial-gradient(circle 500px at 50% 100px, rgba(139,92,246,0.4), transparent)`,
-    }}></div>
+  <div className="body-wrapper-div">
+
+    {/* div for background */}
+    <div className="bg-div" style={
+      !customBg ?
+        {backgroundImage: `radial-gradient(circle 700px at 50% 350px, rgba(139,92,246,0.4), transparent)`} :
+        {
+          backgroundImage: `url(${customBg})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundAttachment: "fixed",
+        }
+    }></div>
 
 
 
