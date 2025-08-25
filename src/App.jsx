@@ -3,6 +3,8 @@ import Header from "./components/Header"
 import themesLinks from "./themes";
 import Pomodoro from "./components/pomodoro";
 import TodoList from "./components/TodoList";
+import homepageBgImage from "./assets/night-sky-stars1.jpg"
+import "./aurora.css"
 
 export default function App() {
   const [theme, setTheme] = useState("default")
@@ -124,7 +126,7 @@ export default function App() {
 
 
   useEffect(() => {
-    if (!customBg) document.body.style.backgroundImage="none"
+    if (!customBg) document.body.style.backgroundImage=``
     if (customBg) document.body.style.backgroundImage=`url(${customBg})`
   }, [customBg])
 
@@ -178,19 +180,34 @@ export default function App() {
   
   return (
   <>
+  <div className="background-div">
+    <div className="aurora-bg" style={{
+      backgroundImage: `radial-gradient(circle 500px at 50% 100px, rgba(139,92,246,0.4), transparent)`,
+    }}></div>
+
+
+
+    
     <Header setTheme={setTheme} setIsCustomTheme={setIsCustomTheme} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
 
     <Pomodoro isPomodoroShown={isPomodoroShown} />
     <TodoList isTodoListShown={isTodoListShown} />
 
-    {theme==="default" && <h1>😎 Chill Website</h1>}
+    {theme==="default" && 
+    <div className="homepage-info-div">
+      <h1><span style={{textShadow: "none"}}>🌌</span> Chill Space</h1>
+      <p>Your space to focus, study, work, relax, or just chill</p>
+      <p>Choose from many themes above or create your theme</p>
+    </div>
+    }
     
-    {isCustomTheme && (
-      <section className="custom-theme-section">
-        <button className="close-btn" onClick={() => setIsCustomTheme(prev => !prev)} >
-          <img src="https://img.icons8.com/?size=100&id=83149&format=png&color=ffffff" alt="close-icon" style={{width: "18px"}} />
-        </button>
+    {isCustomTheme &&
+    <section className="custom-theme-section">
+      <button className="close-btn" onClick={() => setIsCustomTheme(prev => !prev)} >
+        <img src="https://img.icons8.com/?size=100&id=83149&format=png&color=ffffff" alt="close-icon" style={{width: "18px"}} />
+      </button>
 
+      <div className="yt-link-div">
         <p>Enter any youtube video link</p>
 
         <div className="input-and-btn-div">
@@ -204,10 +221,12 @@ export default function App() {
             Go
           </button>
         </div>
+      </div>
 
+      <div className="custom-bg-div">
         <p>Upload Custom background Image</p>
 
-        <div className="bg-upload-div">
+        <div className="input-and-btn-div">
           <input ref={customBgInputRef} type="file" name="custom-bg-input" id="custom-bg-input" accept="image/*" onChange={event => {
             const fileReader = new FileReader()
             fileReader.readAsDataURL(event.target.files[0])
@@ -220,17 +239,20 @@ export default function App() {
               setIsHidden(true)
             }
           }}/>
+
+          {customBg &&
           <button className="reset-bg-btn" onClick={() => {
             setCustomBg("")
             setIsHidden(false)
             customBgInputRef.current.value = ""
           }}>Reset Background</button>
-
+          }
         </div>
-        {/* <p>or Enter image link</p>
-        <input type="text" /> */}
-      </section>
-    )}
+      </div>
+      {/* <p>or Enter image link</p>
+      <input type="text" /> */}
+    </section>
+    }
 
     {ytLinkId && (
     <>
@@ -253,6 +275,7 @@ export default function App() {
       </div>
     </>
     )}
+  </div>
   </>  
   )
 }

@@ -1,12 +1,32 @@
-# React + Vite
+# 🌌 Chill Space  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Chill Space is a multipurpose web app designed to help you **focus, relax, stay productive or just chill**.  
+It combines calming background videos with a **Pomodoro timer** and a **Todo list**, creating a space where you can study, work, or just chill.  
 
-Currently, two official plugins are available:
+### 🔗 Live Link: [https://chill-space.netlify.app](https://chill-space.netlify.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## ✨ Features  
+- 🎥 **Background Player** – Play fullscreen ambient videos for a relaxing atmosphere  
+- 🎨 **Various Themes** - Lofi, Cafe, Library, Relax themes
+- 🎨 **Create your Theme** - Select any youtube video and custom background
+- ⏱️ **Pomodoro Timer** – Stay productive with focus & break cycles  
+- 📝 **To-Do List** – Organize your tasks and track progress  
+- 🌙 **Minimal, Modern UI** – A glassy, distraction-free interface  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## 🚀 Tech Stack  
+- **React JS** and **Vite JS**
+- **HTML**  
+- **CSS** (with glassmorphism styles)  
+- **YouTube IFrame Player API**  
+
+
+## 💡 Future Improvements  
+- 🎶 Playlists links support
+- 🎶 Spotify links support
+- 📊 Task statistics
+- ✨ Ability to set as your new tab page or home page 
+- ✨ Add your motivational quote 
+
+
