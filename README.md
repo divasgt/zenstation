@@ -1,7 +1,7 @@
 # 🌌 Chill Space  
 
-Chill Space is a multipurpose web app designed to help you **focus, relax, stay productive or just chill**.  
-It combines calming background videos with a **Pomodoro timer** and a **Todo list**, creating a space where you can study, work, or just chill.  
+Chill Space is a multipurpose web app designed to help you **focus, study, work, relax, or just chill**.  
+It combines calming background videos of various themes with a **Pomodoro timer** and a **Todo list**, creating a space where you can study, work, or just chill.  
 
 ### 🔗 Live Link: [https://chill-space.netlify.app](https://chill-space.netlify.app)
 
