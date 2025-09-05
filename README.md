@@ -1,4 +1,4 @@
-# 🌌 Chill Space  
+# <img src="./src/assets/milky-way_1f30c.png" alt="Logo Icon" width="32" style="vertical-align: bottom"/> Chill Space  
 
 Chill Space is a multipurpose web app designed to help you **focus, study, work, relax, or just chill**.  
 It combines calming background videos of various themes with a **Pomodoro timer** and a **Todo list**, creating a space where you can study, work, or just chill.  
