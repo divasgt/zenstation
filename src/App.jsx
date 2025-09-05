@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import Header from "./components/Header"
 import themesLinks from "./themes";
-import Pomodoro from "./components/pomodoro";
+import Pomodoro from "./components/Pomodoro";
 import TodoList from "./components/TodoList";
+import logoImg from "./assets/milky-way_1f30c.png"
 import homepageBgImage from "./assets/night-sky-stars1.jpg" 
 
 export default function App() {
@@ -189,7 +190,7 @@ export default function App() {
 
     {!ytLinkId && 
     <div className="homepage-info-div">
-      <h1><span style={{textShadow: "none"}}>🌌</span> Chill Space</h1>
+      <h1><img src={logoImg} alt="Logo Icon" className="homepage-logo-img" /> Chill Space</h1>
       <p>Your space to focus, study, work, relax, or just chill</p>
       <p>Choose from many themes above or create your theme</p>
     </div>

@@ -100,10 +100,17 @@ header button:hover {
 }
 
 .home-nav-link {
+  /* background-color: white; */
   text-shadow: none;
   font-size: 18px;
-  padding-left: 16px;
-  padding-right: 12px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+.home-nav-link > img {
+  width: 25px;
+  /* text-align: center; */
+  vertical-align: top;
+  /* margin-bottom: 1px; */
 }
 
 .header-right-div {
@@ -510,4 +517,12 @@ input[type="text"]::placeholder {
 .about-btn:hover + .about-tooltip, .fullscreen-btn:hover +.fullscreen-tooltip, .pomodoro-btn:hover + .pomodoro-tooltip, .todo-list-btn:hover + .todo-list-tooltip {
   visibility: visible;
   opacity: 1;
+}
+
+.homepage-logo-img {
+  text-shadow: none;
+  width: 100px;
+  height: 100px;
+  vertical-align: top;
+  /* margin-bottom: 10px; */
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import logoImg from "../assets/milky-way_1f30c.png"
 
 export default function Header({ setTheme, setShowCustomThemeSection, setIsPomodoroShown, setIsTodoListShown, setCurrentIndex }) {
   const [isFullScreen, setIsFullScreen] = useState(false)
@@ -21,7 +22,9 @@ export default function Header({ setTheme, setShowCustomThemeSection, setIsPomod
   <header>
     <nav>
       <ul>
-        <li><button className="home-nav-link" onClick={() => handleThemeClick("default")}>🌌</button></li>
+        <li><button className="home-nav-link" onClick={() => handleThemeClick("default")}>
+          <img src={logoImg} alt="Logo Icon" />
+        </button></li>
         <li><button onClick={() => handleThemeClick("lofi")}>Lofi</button></li>
         <li><button onClick={() => handleThemeClick("cafe")}>Cafe</button></li>
         <li><button onClick={() => handleThemeClick("library")}>Library</button></li>
