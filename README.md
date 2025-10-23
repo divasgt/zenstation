@@ -1,9 +1,9 @@
-# <img src="./src/assets/milky-way_1f30c.png" alt="Logo Icon" width="32" style="vertical-align: bottom"/> Chill Space  
+# <img src="./src/assets/milky-way_1f30c.png" alt="Logo Icon" width="32" style="vertical-align: bottom"/> Zen Station  
 
-Chill Space is a multipurpose web app designed to help you **focus, study, work, relax, or just chill**.  
-It combines calming background videos of various themes with a **Pomodoro timer** and a **Todo list**, creating a space where you can study, work, or just chill.  
+Zen Station is a multipurpose web app designed to give you a virtual environment to help you **focus, study, relax, or just chill**.  
+It combines calming background videos of various themes with various widgets like **Pomodoro timer** and **Todo list**, creating a perfect space.  
 
-### 🔗 Live Link: [https://chill-space.netlify.app](https://chill-space.netlify.app)
+### 🔗 Live Link: [https://zenstation.netlify.app](https://zenstation.netlify.app)
 
 
 ## ✨ Features  
@@ -27,6 +27,4 @@ It combines calming background videos of various themes with a **Pomodoro timer*
 - 🎶 Spotify links support
 - 📊 Task statistics
 - ✨ Ability to set as your new tab page or home page 
-- ✨ Add your motivational quote 
-
-
+- ✨ Add or show inspirational quotes 
