@@ -1,24 +1,22 @@
 * {
   font-family: "Space Grotesk", Arial, Helvetica, sans-serif;
   color: white;
+  z-index: 1;
 }
 
 body {
   margin: 0;
   padding: 0;
-  padding-top: 55px;
-  /* background-color: #2e2e2e; */
-  /* background-image: url(./assets/night-sky-stars1.jpg); */
+  /* padding-top: 55px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
 
   background-image: linear-gradient(rgba(103, 61, 152, 0.643), rgb(78, 86, 161));
-  /* background: linear-gradient(rgb(78, 86, 161), rgba(103, 61, 152, 0.643)); */
+  background: linear-gradient(rgb(78, 86, 161), rgba(103, 61, 152, 0.643)); */
   /* background: linear-gradient(#3d4f98a4, rgb(67, 77, 164)); */
-  height: calc(100vh - 55px);
-  margin: 0;
+  /* height: calc(100vh - 55px); */
 }
 
 .homepage-info-div {
@@ -307,7 +305,7 @@ input[type="text"]::placeholder {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
+  z-index: 0;
   margin-top: 0;
   pointer-events: none;
 }

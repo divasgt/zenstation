@@ -1,0 +1,13 @@
+.body-wrapper-div {
+  min-height: 100vh;   /* min-h-screen */
+  width: 100%;         /* w-full */
+  background-color: #020617; 
+  /* background-color: #000000; */
+  position: relative;  /* relative */
+}
+
+.bg-div {
+  position: absolute;  /* absolute */
+  inset: 0;            /* inset-0 */
+  z-index: 0;          /* z-0 */
+}

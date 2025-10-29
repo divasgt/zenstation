@@ -4,7 +4,8 @@ import themesLinks from "./themes";
 import Pomodoro from "./components/Pomodoro";
 import TodoList from "./components/TodoList";
 import logoImg from "./assets/milky-way_1f30c.png"
-import homepageBgImage from "./assets/night-sky-stars1.jpg" 
+import homepageBgImage from "./assets/night-sky-stars1.jpg"
+import "./aurora.css"
 
 export default function App() {
   const [theme, setTheme] = useState("default")
@@ -128,10 +129,10 @@ export default function App() {
   },[theme, currentIndex])
 
 
-  useEffect(() => {
-    if (!customBg) document.body.style.backgroundImage=``
-    if (customBg) document.body.style.backgroundImage=`url(${customBg})`
-  }, [customBg])
+  // useEffect(() => {
+  //   if (!customBg) document.body.style.backgroundImage=``
+  //   if (customBg) document.body.style.backgroundImage=`url(${customBg})`
+  // }, [customBg])
 
 
   function randomVideo() {
@@ -183,6 +184,25 @@ export default function App() {
   
   return (
   <>
+  <div className="body-wrapper-div">
+
+    {/* div for background */}
+    <div className="bg-div" style={
+      !customBg ?
+        {backgroundImage: `radial-gradient(circle 700px at 50% 350px, rgba(139,92,246,0.4), transparent)`} :
+        {
+          backgroundImage: `url(${customBg})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundAttachment: "fixed",
+        }
+    }></div>
+
+
+
+    
+    <Header setTheme={setTheme} setShowCustomThemeSection={setShowCustomThemeSection} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
     <Header setTheme={setTheme} setShowCustomThemeSection={setShowCustomThemeSection} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
 
     <Pomodoro isPomodoroShown={isPomodoroShown} />
@@ -270,6 +290,7 @@ export default function App() {
       </div>
     </>
     )}
+  </div>
   </>  
   )
 }
