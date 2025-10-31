@@ -49,7 +49,7 @@ export default function Header({ theme, setTheme, setShowCustomThemeSection, set
         
         <li className="mobile-nav-item">
 
-          <div className="themes-menu-container" onBlur={() => setThemesDropdownShown(false)}>
+          <div className="themes-menu-container" onBlur={() => setTimeout(() => setThemesDropdownShown(false), 150)}>
             <button className="themes-btn" onClick={() => setThemesDropdownShown(prev => !prev)}>
               <span>Themes</span>
               <IoIosArrowDown style={{width: "14px", height: "14px"}} />
@@ -71,7 +71,7 @@ export default function Header({ theme, setTheme, setShowCustomThemeSection, set
 
     <div className="header-right-div">
 
-      <div className="widgets-menu-container" onBlur={() => setWidgetsDropdownShown(false)}>
+      <div className="widgets-menu-container" onBlur={() => setTimeout(() => setWidgetsDropdownShown(false), 150)}>
         <button className="widgets-btn" onClick={() => setWidgetsDropdownShown(prev => !prev)}>
           <span className="plus-icon">+</span>
           <span>widgets</span>
