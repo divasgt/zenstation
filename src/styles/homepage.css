@@ -1,11 +1,13 @@
+.body-wrapper-div {
+  display: grid;
+  place-items: center;
+}
+
 .homepage-info-div {
-  position: fixed;
-  width: 100%;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: -40px;
   text-align: center;
   font-size: 20px;
+  margin-inline: 20px;
 
   text-shadow: 0 0 5px rgba(0,0,0, 0.7), 
                0 0 10px rgba(0,0,0, 0.5);
@@ -39,5 +41,6 @@
   .homepage-logo-img {
     width: 50px;
     height: 50px;
+    margin-right: 10px;
   }
 }
