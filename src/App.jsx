@@ -207,8 +207,8 @@ export default function App() {
     
     <Header theme={theme} setTheme={setTheme} setShowCustomThemeSection={setShowCustomThemeSection} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
 
-    <Pomodoro isPomodoroShown={isPomodoroShown} />
-    <TodoList isTodoListShown={isTodoListShown} />
+    <Pomodoro isPomodoroShown={isPomodoroShown} setIsPomodoroShown={setIsPomodoroShown} />
+    <TodoList isTodoListShown={isTodoListShown} setIsTodoListShown={setIsTodoListShown} />
 
     {!ytLinkId && 
     <div className="homepage-info-div">
@@ -221,7 +221,7 @@ export default function App() {
     {showCustomThemeSection &&
     <section className="custom-theme-section">
       <button className="close-btn" onClick={() => setShowCustomThemeSection(prev => !prev)} >
-        <IoIosClose style={{width: "25px", height: "25px"}} />
+        <IoIosClose style={{width: "30px", height: "30px"}} />
       </button>
 
       <div className="yt-link-div">

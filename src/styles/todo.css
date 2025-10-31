@@ -18,6 +18,20 @@
   text-shadow: 0 0 5px rgba(0,0,0, 0.7);
 }
 
+.todo-list-app .close-btn {
+  position: absolute;
+  top: 0px;
+  right: -4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.todo-list-app:hover .close-btn {
+  opacity: 0.7;
+}
+.todo-list-app .close-btn:hover {
+  opacity: 1;
+}
+
 .todo-list-app > p {
   margin: 0 auto 10px;
   font-size: 20px;

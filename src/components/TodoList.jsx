@@ -1,7 +1,9 @@
-import {useState} from "react"
+import { useState } from "react"
 import { nanoid } from "nanoid"
+import { IoIosClose } from 'react-icons/io';
 
-export default function TodoList({isTodoListShown}) {
+
+export default function TodoList({isTodoListShown, setIsTodoListShown}) {
   const [todoArray, setTodoArray] = useState([])
   const [todoInput, setTodoInput] = useState("")
 
@@ -35,6 +37,10 @@ export default function TodoList({isTodoListShown}) {
 
   return (
     <div className="todo-list-app" style={!isTodoListShown ? {display: "none"} : {}}>
+      <button className="close-btn" onClick={() => setIsTodoListShown(false)}>
+        <IoIosClose style={{width: "25px", height: "25px"}} />
+      </button>
+      
       <p>Todo List</p>
 
       <div className="add-todo-div">

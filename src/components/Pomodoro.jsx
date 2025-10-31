@@ -1,6 +1,7 @@
 import { useRef, useState } from "react"
+import { IoIosClose } from "react-icons/io"
 
-export default function Pomodoro({isPomodoroShown}) {
+export default function Pomodoro({isPomodoroShown, setIsPomodoroShown}) {
   const [timer, setTimer] = useState(1500)
   const [isTimerRunning, setIsTimerRunning] = useState(false)
   const intervalIdRef = useRef(null)
@@ -33,6 +34,10 @@ export default function Pomodoro({isPomodoroShown}) {
   
   return (
     <div className="pomodoro-div" style={!isPomodoroShown ? {display: "none"} : {}}>
+      <button className="close-btn" onClick={() => setIsPomodoroShown(false)}>
+        <IoIosClose style={{width: "25px", height: "25px"}} />
+      </button>
+      
       <p>Pomodoro timer</p>
       <div className="timer">{formatTime(timer)}</div>
       <div>
