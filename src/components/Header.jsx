@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react"
 import logoImg from "../assets/milky-way_1f30c.png"
+import { AiOutlineUnorderedList } from 'react-icons/ai';
+import { LuAlarmClock } from 'react-icons/lu';
+import { FaHeart } from "react-icons/fa";
+import { RiExpandDiagonalLine } from 'react-icons/ri';
+import { PiArrowsInSimple } from 'react-icons/pi';
 
-export default function Header({ setTheme, setShowCustomThemeSection, setIsPomodoroShown, setIsTodoListShown, setCurrentIndex }) {
+export default function Header({ theme, setTheme, setShowCustomThemeSection, setIsPomodoroShown, setIsTodoListShown, setCurrentIndex }) {
   const [isFullScreen, setIsFullScreen] = useState(false)
+  const [widgetsDropdownShown, setWidgetsDropdownShown] = useState(false)
 
   function toggleFullScreen() {
     if (!isFullScreen) {
@@ -20,6 +26,9 @@ export default function Header({ setTheme, setShowCustomThemeSection, setIsPomod
   
   return (
   <header>
+    { theme!==("default")  && <div className="header-bg-blur-div"></div> }
+    
+    
     <nav>
       <ul>
         <li><button className="home-nav-link" onClick={() => handleThemeClick("default")}>
@@ -39,31 +48,52 @@ export default function Header({ setTheme, setShowCustomThemeSection, setIsPomod
       </ul>
     </nav>
 
+
     <div className="header-right-div">
 
-      <button className="todo-list-btn" onClick={() => setIsTodoListShown(prev => !prev)}>
-        <img src="https://img.icons8.com/?size=100&id=11266&format=png&color=ffffff" alt="todo-list" />
-      </button>
-      <div className="tooltip todo-list-tooltip">Todo List</div>
-      
-      <button className="pomodoro-btn" onClick={() => setIsPomodoroShown(prev => !prev)}>
-        <img className="pomodoro-clock-img" src="https://img.icons8.com/?size=100&id=16153&format=png&color=ffffff" alt="pomodoro-clock-icon" />
-      </button>
-      <div className="tooltip pomodoro-tooltip">Pomodoro Timer</div>
+      <div className="widgets-menu-container" onBlur={() => setWidgetsDropdownShown(false)}>
+        <button className="widgets-btn" onClick={() => setWidgetsDropdownShown(prev => !prev)}>
+          <span className="plus-icon">+</span>
+          <span>widgets</span>
+        </button>
 
-      <button onClick={toggleFullScreen} className="fullscreen-btn">
-        {isFullScreen ?
-          <img src="https://img.icons8.com/material-outlined/24/FFFFFF/compress.png" alt="compress"/> :
-          <img className="fullscreen-img" src="https://img.icons8.com/forma-regular-sharp/24/FFFFFF/decompress.png" alt="decompress"/>
-          // <img src="https://img.icons8.com/sf-regular/48/FFFFFF/expand.png" alt="expand"/>
-          // <img style={{width: "15px"}} className="fullscreen-img" src="https://img.icons8.com/?size=100&id=ljlb4da7psfA&format=png&color=ffffff" alt="fullscreen-icon" />
-          // <img className="fullscreen-img" src="https://img.icons8.com/material-outlined/24/FFFFFF/full-screen--v1.png" alt="full-screen--v1"/>
-        }
-      </button>
-      <div className="tooltip fullscreen-tooltip">Fullscreen</div>
+        {/* Widgets dropdown menu */}
+        <div
+          className="widgets-dropdown"
+          style={
+            widgetsDropdownShown
+            ? {visibility: "visible", opacity: "100%", scale: "100%"}
+            : {}
+          }
+        >
+          <button className="todo-list-btn" onClick={() => setIsTodoListShown(prev => !prev)}>
+            <AiOutlineUnorderedList style={{width: "18px", height: "18px", marginBottom: "1px"}} />
+            Todo list
+          </button>
 
-      <button className="about-btn">❤</button>
-      <div className="tooltip about-tooltip">About</div>
+          <button className="pomodoro-btn" onClick={() => setIsPomodoroShown(prev => !prev)}>
+            <LuAlarmClock style={{width: "18px", height: "18px"}} />
+            Pomodoro timer
+          </button>
+        </div>
+      </div>
+
+      <div className="icon-container">
+        <button onClick={toggleFullScreen} className="fullscreen-btn">
+          {isFullScreen ?
+            <PiArrowsInSimple style={{width: "20px", height: "20px", marginTop: "1px"}} /> :
+            <RiExpandDiagonalLine style={{width: "18px", height: "18px"}} />
+          }
+        </button>
+        <div className="tooltip fullscreen-tooltip">Fullscreen</div>
+      </div>
+
+      <div className="icon-container">
+        <button className="about-btn">
+          <FaHeart style={{width: "14px", height: "14px"}} />
+        </button>
+        <div className="tooltip about-tooltip">About</div>
+      </div>
       
     </div>
   </header>
