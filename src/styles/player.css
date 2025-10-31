@@ -52,8 +52,8 @@
   text-shadow: 0 0 5px rgba(0,0,0, 1);
   vertical-align: middle;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: start;
+  gap: 16px;
 }
 
 .video-title-container > span {
@@ -69,18 +69,19 @@
   height: 16px;
 }
 .visualizer-bar {
-  width: 3px;
-  background-color: #fff;
-  border-radius: 2px;
+  width: 2.5px;
+  background-color: #ffffff;
+  border-radius: 1px;
   animation-duration: 1.2s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+  transform-origin: bottom;
 }
 .visualizer-bar.playing {
   animation-name: bounce;
 }
 .visualizer-bar:nth-child(1) { height: 40%; animation-delay: 0.2s; }
-.visualizer-bar:nth-child(2) { height: 100%; animation-delay: 0s; }
+.visualizer-bar:nth-child(2) { height: 90%; animation-delay: 0s; }
 .visualizer-bar:nth-child(3) { height: 60%; animation-delay: 0.4s; }
 
 @keyframes bounce {
