@@ -1,9 +1,9 @@
 @import url('./styles/header.css');
 @import url('./styles/homepage.css');
-@import url('./styles/player.css');
+@import url('./styles/playerControlsBar.css');
 @import url('./styles/pomodoro.css');
-@import url('./styles/todo.css');
-@import url('./styles/customTheme.css');
+@import url('./styles/todoList.css');
+@import url('./styles/customThemePopup.css');
 @import url('./styles/tooltip.css');
 
 * {
