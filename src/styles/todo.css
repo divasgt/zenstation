@@ -126,3 +126,10 @@
 .delete-btn:hover * {
   color: rgba(255, 0, 0, 0.73);
 }
+
+/* Show close button on mobile screen always */
+@media (max-width: 820px) {
+  .todo-list-app .close-btn {
+    opacity: 0.5;
+  }
+}
