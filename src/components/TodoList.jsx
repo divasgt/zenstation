@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { nanoid } from "nanoid"
 import { IoIosClose } from 'react-icons/io';
+import { MdDelete } from "react-icons/md";
 
 
 export default function TodoList({isTodoListShown, setIsTodoListShown}) {
@@ -8,29 +9,39 @@ export default function TodoList({isTodoListShown, setIsTodoListShown}) {
   const [todoInput, setTodoInput] = useState("")
 
   function addTodo() {
-    if (todoInput === "" || todoArray.includes(todoInput)) {
+    if (todoInput.trim() === "" || todoArray.some(todo => todo.text === todoInput)) {
       return
     }
-    setTodoArray(prev => (
-      [todoInput, ...prev]
-    ))
+    const newTodo = { id: nanoid(), text: todoInput, checked: false }
+    setTodoArray(prev => [newTodo, ...prev])
 
     setTodoInput("")
   }
 
-  function deleteTodo(index) {
-    setTodoArray(prev => prev.filter((todo, i) => {
-      return i !== index
+  function deleteTodo(idToDelete) {
+    setTodoArray(prev => prev.filter(todo => todo.id !== idToDelete))
+  }
+
+  function toggleTodo(idToToggle) {
+    setTodoArray(prev => prev.map(todo => {
+      if (todo.id === idToToggle) {
+        return {...todo, checked: !todo.checked}
+      }
+      return todo
     }))
   }
 
-  const todoElements = todoArray.map((todo, index) => (
-    <div className="todo" key={nanoid()}>
-      {/* will add todo checkbox later */}
-      {/* <input type="checkbox" name="checkbox-todo" id="checkbox-todo" /> */}
-      <div>{todo}</div>
-      <button className="delete-btn" onClick={() => deleteTodo(index)}>
-        <img src="https://img.icons8.com/?size=100&id=87371&format=png&color=ffffff" alt="delete-icon" />
+  const todoElements = todoArray.map(todo => (
+    <div className="todo" key={todo.id}>
+      <input
+        type="checkbox"
+        id={todo.id}
+        checked={todo.checked}
+        onChange={() => toggleTodo(todo.id)}
+      />
+      <span className={todo.checked ? "todo-text strikethrough" : "todo-text"}>{todo.text}</span>
+      <button className="delete-btn" onClick={() => deleteTodo(todo.id)}>
+        <MdDelete style={{width: "18px", height: "18px"}} />
       </button>
     </div>
   ))
@@ -46,7 +57,7 @@ export default function TodoList({isTodoListShown, setIsTodoListShown}) {
       <div className="add-todo-div">
         <input
           type="text"
-          placeholder="Type your Todo"
+          placeholder="Type your todo"
           value={todoInput}
           onChange={(e) => setTodoInput(e.target.value)}
           onKeyDown={(e) => (e.key==="Enter" && addTodo())}        
