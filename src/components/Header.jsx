@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import logoImg from "../assets/milky-way_1f30c.png"
 import { AiOutlineUnorderedList } from 'react-icons/ai';
+import { IoIosArrowDown } from "react-icons/io";
 import { LuAlarmClock } from 'react-icons/lu';
 import { FaHeart } from "react-icons/fa";
 import { RiExpandDiagonalLine } from 'react-icons/ri';
 import { PiArrowsInSimple } from 'react-icons/pi';
 
 export default function Header({ theme, setTheme, setShowCustomThemeSection, setIsPomodoroShown, setIsTodoListShown, setCurrentIndex }) {
+  const [themesDropdownShown, setThemesDropdownShown] = useState(false)
   const [isFullScreen, setIsFullScreen] = useState(false)
   const [widgetsDropdownShown, setWidgetsDropdownShown] = useState(false)
 
@@ -31,20 +33,38 @@ export default function Header({ theme, setTheme, setShowCustomThemeSection, set
     
     <nav>
       <ul>
-        <li><button className="home-nav-link" onClick={() => handleThemeClick("default")}>
-          <img src={logoImg} alt="Logo Icon" />
-        </button></li>
-        <li><button onClick={() => handleThemeClick("lofi")}>Lofi</button></li>
-        <li><button onClick={() => handleThemeClick("cafe")}>Cafe</button></li>
-        <li><button onClick={() => handleThemeClick("library")}>Library</button></li>
-        <li><button onClick={() => handleThemeClick("relax")}>Relax</button></li>
+        <li className="home-nav-item"><button className="home-nav-link" onClick={() => handleThemeClick("default")}>
+            <img src={logoImg} alt="Logo Icon" />
+          </button></li>
+        <li className="desktop-nav-item"><button onClick={() => handleThemeClick("lofi")}>Lofi</button></li>
+        <li className="desktop-nav-item"><button onClick={() => handleThemeClick("cafe")}>Cafe</button></li>
+        <li className="desktop-nav-item"><button onClick={() => handleThemeClick("library")}>Library</button></li>
+        <li className="desktop-nav-item"><button onClick={() => handleThemeClick("relax")}>Relax</button></li>
 
         {/* on clicking below button, pause video if playing and show entering link popup */}
-        <li><button onClick={() => {
-          setShowCustomThemeSection(prev => !prev)
-          handleThemeClick("custom")
-        }
-        }>Create my theme</button></li>
+        <li className="desktop-nav-item"><button onClick={() => {
+            setShowCustomThemeSection(prev => !prev)
+          }
+          }>Create my theme</button></li>
+        
+        <li className="mobile-nav-item">
+
+          <div className="themes-menu-container" onBlur={() => setThemesDropdownShown(false)}>
+            <button className="themes-btn" onClick={() => setThemesDropdownShown(prev => !prev)}>
+              <span>Themes</span>
+              <IoIosArrowDown style={{width: "14px", height: "14px"}} />
+            </button>
+
+            <div className="themes-dropdown" style={themesDropdownShown ? {visibility: "visible", opacity: "100%", scale: "100%"} : {}}>
+              <button onClick={() => handleThemeClick("lofi")}>Lofi</button>
+              <button onClick={() => handleThemeClick("cafe")}>Cafe</button>
+              <button onClick={() => handleThemeClick("library")}>Library</button>
+              <button onClick={() => handleThemeClick("relax")}>Relax</button>
+              <div></div>
+              <button onClick={() => {setShowCustomThemeSection(prev => !prev); setThemesDropdownShown(false)}}>Create my theme</button>
+            </div>
+          </div>
+        </li>
       </ul>
     </nav>
 

@@ -1,6 +1,6 @@
 .homepage-info-div {
   position: fixed;
-  width: max-content;
+  width: 100%;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -26,4 +26,18 @@
   width: 100px;
   height: 100px;
   vertical-align: top;
+}
+
+@media (max-width: 820px) {
+  .homepage-info-div {
+    font-size: 14px;
+  }
+  .homepage-info-div h1 {
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+  .homepage-logo-img {
+    width: 50px;
+    height: 50px;
+  }
 }

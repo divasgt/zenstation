@@ -42,6 +42,10 @@ header button {
   transition: all 0.1s ease;
 }
 
+.mobile-nav-item {
+  display: none;
+}
+
 nav button:hover {
   opacity: 0.7;
 }
@@ -109,6 +113,7 @@ button {
   border: 1px solid rgba(255,255,255, 0.1);
   background-color: rgba(255,255,255, 0.15);
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0.7;
 }
 .widgets-btn > .plus-icon {
   font-size: 20px;
@@ -148,6 +153,57 @@ button {
   background-color: rgba(255,255,255, 0.1);
 }
 
+
+.themes-menu-container {
+  position: relative;
+}
+.themes-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  border: none;
+  font-size: inherit;
+  cursor: pointer;
+  text-shadow: 0 0 5px rgba(0,0,0, 1);
+}
+.themes-dropdown {
+  visibility: hidden;
+  scale: 95%;
+  opacity: 0;
+  transition: all 0.1s ease;
+  z-index: 50;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+
+  border: 1px solid rgba(255,255,255, 0.2);
+  border-radius: 8px;
+  background-color: rgba(0,0,0, 0.1);
+  backdrop-filter: blur(20px);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+}
+.themes-dropdown > button {
+  padding: 8px;
+  border-radius: 6px;
+  text-align: left;
+  font-size: 15px;
+}
+.themes-dropdown > button:hover {
+  background-color: rgba(255,255,255, 0.1);
+}
+.themes-dropdown > div {
+  width: 100%;
+  border: none;
+  border-top: 1px solid rgba(255,255,255, 0.1);
+  margin-block: 5px;
+}
+
 .icon-container {
   position: relative;
   display: flex;
@@ -156,4 +212,19 @@ button {
 }
 .icon-container > button:hover {
   opacity: 0.7;
+}
+
+@media (max-width: 820px) {
+  header {
+    padding-inline: 15px;
+  }
+  .desktop-nav-item {
+    display: none;
+  }
+  .mobile-nav-item {
+    display: block;
+  }
+  header > nav > ul {
+    gap: 15px;
+  }
 }

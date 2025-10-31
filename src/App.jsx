@@ -6,6 +6,7 @@ import TodoList from "./components/TodoList";
 import logoImg from "./assets/milky-way_1f30c.png"
 import homepageBgImage from "./assets/night-sky-stars1.jpg"
 import "./aurora.css"
+import { IoIosClose } from 'react-icons/io';
 
 export default function App() {
   const [theme, setTheme] = useState("default")
@@ -202,7 +203,7 @@ export default function App() {
 
 
     
-    <Header setTheme={setTheme} setShowCustomThemeSection={setShowCustomThemeSection} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
+    <Header theme={theme} setTheme={setTheme} setShowCustomThemeSection={setShowCustomThemeSection} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
 
     <Pomodoro isPomodoroShown={isPomodoroShown} />
     <TodoList isTodoListShown={isTodoListShown} />
@@ -218,7 +219,7 @@ export default function App() {
     {showCustomThemeSection &&
     <section className="custom-theme-section">
       <button className="close-btn" onClick={() => setShowCustomThemeSection(prev => !prev)} >
-        <img src="https://img.icons8.com/?size=100&id=83149&format=png&color=ffffff" alt="close-icon" style={{width: "18px"}} />
+        <IoIosClose style={{width: "25px", height: "25px"}} />
       </button>
 
       <div className="yt-link-div">
@@ -228,12 +229,20 @@ export default function App() {
           <input type="text" placeholder="Enter a youtube link" value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             onKeyDown={(e) => {
-              e.key==="Enter" ? setYtLink(inputText) : null
+              if (e.key==="Enter") {
+                setYtLink(inputText)
+                setTheme("custom")
+                setCurrentIndex(0)
+              }
             }}
           />
-          <button className="go-btn" onClick={() => setYtLink(inputText)}>
-            Go
-          </button>
+          <button
+            className="go-btn" onClick={() => {
+              setYtLink(inputText)
+              setTheme("custom")
+              setCurrentIndex(0)
+          }}
+          >Go</button>
         </div>
       </div>
 
@@ -272,10 +281,18 @@ export default function App() {
     <>
       <div className="player-info-and-controls">
         <div className="player-controls">
-          <button onClick={togglePlay}>{isPlaying ? "⏸" : "▶"}</button>
-          <button onClick={toggleMute}>{isMuted ? "🔇" : "🔊"}</button>
-          <button onClick={() => handleNextOrPrevious("previous")}>⏮</button>
-          <button onClick={() => handleNextOrPrevious("next")}>⏭</button>
+          <button onClick={togglePlay} aria-label={isPlaying ? "Pause" : "Play"}>
+            {isPlaying ? "⏸" : "▶"}
+          </button>
+          <button onClick={toggleMute} aria-label={isMuted ? "Unmute" : "Mute"}>
+            {isMuted ? "🔇" : "🔊"}
+          </button>
+          <button onClick={() => handleNextOrPrevious("previous")} aria-label="Previous track">
+            ⏮
+          </button>
+          <button onClick={() => handleNextOrPrevious("next")} aria-label="Next track">
+            ⏭
+          </button>
           <button onClick={() => setIsHidden(prev => !prev)}>{isHidden ? "🎥 Video Mode" : "🎵 Audio Mode"}</button>
         </div>
         <div className="video-title">
