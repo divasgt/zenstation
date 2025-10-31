@@ -3,6 +3,7 @@
   top: 100px;
   left: 50%;
   transform: translate(-50%);
+  z-index: 20;
   
   width: fit-content;
   text-align: center;
