@@ -283,17 +283,18 @@ export default function App() {
     <>
       <div className="player-info-and-controls">
         <div className="player-controls">
-          <button onClick={togglePlay} aria-label={isPlaying ? "Pause" : "Play"} >
-            {isPlaying ? <FaPause /> : <FaPlay />}
-          </button>
-          <button onClick={toggleMute} aria-label={isMuted ? "Unmute" : "Mute"} >
-            {isMuted ? <IoVolumeMute style={{width: "18px", height: "18px"}} /> : <IoVolumeHigh style={{width: "18px", height: "18px"}} />}
-          </button>
           <button onClick={() => handleNextOrPrevious("previous")} aria-label="Previous track" >
             <FaStepBackward />
           </button>
+          <button onClick={togglePlay} aria-label={isPlaying ? "Pause" : "Play"} >
+            {isPlaying ? <FaPause /> : <FaPlay />}
+          </button>
           <button onClick={() => handleNextOrPrevious("next")} aria-label="Next track" >
             <FaStepForward />
+          </button>
+          
+          <button onClick={toggleMute} aria-label={isMuted ? "Unmute" : "Mute"} >
+            {isMuted ? <IoVolumeMute style={{width: "18px", height: "18px"}} /> : <IoVolumeHigh style={{width: "18px", height: "18px"}} />}
           </button>
           <button onClick={() => setIsHidden(prev => !prev)} style={{fontSize: "14px"}}>
             {isHidden
