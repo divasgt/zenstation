@@ -72,11 +72,21 @@ input[type="text"]::placeholder {
 
 .input-and-btn-div button  {
   font-size: 15px;
-  padding: 8px 10px;
-  background-color: rgba(255, 255, 255, 0.449);
+  padding: 8px 14px;
+  background-color: rgba(239, 239, 239, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 4px;
   text-wrap: nowrap;
 
   cursor: pointer;
+}
+.input-and-btn-div button:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 820px) {
+  .custom-theme-section {
+    scale: 80%;
+    transform: translate(-60%);
+  }
 }

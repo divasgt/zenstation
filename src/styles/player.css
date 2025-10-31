@@ -8,6 +8,7 @@
   gap: 14px;
   border-top-right-radius: 6px;
   max-width: 650px;
+  font-size: 14px;
 
   /* blur effect styles */
   background-color: rgba(0,0,0, 0.05);
@@ -48,7 +49,6 @@
 
 
 .player-info-and-controls > .video-title-container {
-  font-size: 15px;
   text-shadow: 0 0 4px rgba(0,0,0, 0.8);
   vertical-align: middle;
   display: flex;
@@ -125,6 +125,16 @@
     max-width: unset;
     right: -2px;
     border-top-right-radius: 0;
-    padding: 18px 20px;
+    padding: 15px 18px;
+  }
+
+  .player-controls {
+    scale: 90%;
+    transform: translateX(-6%);
+  }
+  
+  .video-title-container {
+    scale: 90%;
+    transform: translateX(-5%);
   }
 }
