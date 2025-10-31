@@ -186,8 +186,7 @@ export default function App() {
 
   
   return (
-  <>
-  <div className="body-wrapper-div">
+  <div className="body-wrapper">
 
     {/* div for background */}
     <div className="bg-div" style={
@@ -219,7 +218,7 @@ export default function App() {
     }
     
     {showCustomThemeSection &&
-    <section className="custom-theme-section">
+    <div className="custom-theme-section">
       <button className="close-btn" onClick={() => setShowCustomThemeSection(prev => !prev)} >
         <IoIosClose style={{width: "30px", height: "30px"}} />
       </button>
@@ -276,7 +275,7 @@ export default function App() {
       </div>
       {/* <p>or Enter image link</p>
       <input type="text" /> */}
-    </section>
+    </div>
     }
 
     {ytLinkId && (
@@ -321,6 +320,5 @@ export default function App() {
     </>
     )}
   </div>
-  </>  
   )
 }
