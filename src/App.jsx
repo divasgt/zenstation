@@ -7,6 +7,8 @@ import logoImg from "./assets/milky-way_1f30c.png"
 import homepageBgImage from "./assets/night-sky-stars1.jpg"
 import "./aurora.css"
 import { IoIosClose } from 'react-icons/io';
+import { FaPlay, FaPause, FaStepBackward, FaStepForward, FaVideo, FaMusic } from 'react-icons/fa';
+import { IoVolumeHigh, IoVolumeMute } from 'react-icons/io5';
 
 export default function App() {
   const [theme, setTheme] = useState("default")
@@ -281,23 +283,34 @@ export default function App() {
     <>
       <div className="player-info-and-controls">
         <div className="player-controls">
-          <button onClick={togglePlay} aria-label={isPlaying ? "Pause" : "Play"}>
-            {isPlaying ? "⏸" : "▶"}
+          <button onClick={togglePlay} aria-label={isPlaying ? "Pause" : "Play"} >
+            {isPlaying ? <FaPause /> : <FaPlay />}
           </button>
-          <button onClick={toggleMute} aria-label={isMuted ? "Unmute" : "Mute"}>
-            {isMuted ? "🔇" : "🔊"}
+          <button onClick={toggleMute} aria-label={isMuted ? "Unmute" : "Mute"} >
+            {isMuted ? <IoVolumeMute style={{width: "18px", height: "18px"}} /> : <IoVolumeHigh style={{width: "18px", height: "18px"}} />}
           </button>
-          <button onClick={() => handleNextOrPrevious("previous")} aria-label="Previous track">
-            ⏮
+          <button onClick={() => handleNextOrPrevious("previous")} aria-label="Previous track" >
+            <FaStepBackward />
           </button>
-          <button onClick={() => handleNextOrPrevious("next")} aria-label="Next track">
-            ⏭
+          <button onClick={() => handleNextOrPrevious("next")} aria-label="Next track" >
+            <FaStepForward />
           </button>
-          <button onClick={() => setIsHidden(prev => !prev)}>{isHidden ? "🎥 Video Mode" : "🎵 Audio Mode"}</button>
+          <button onClick={() => setIsHidden(prev => !prev)} style={{fontSize: "14px"}}>
+            {isHidden
+              ? <><FaVideo />Video Mode</>
+              : <><FaMusic />Audio Mode</>
+            }
+          </button>
         </div>
-        <div className="video-title">
-          <span>Now Playing: </span>
-          {videoTitle}</div>
+
+        <div className="video-title-container">
+          <div className="visualizer-container">
+            <div className={`visualizer-bar ${isPlaying ? 'playing' : ''}`}></div>
+            <div className={`visualizer-bar ${isPlaying ? 'playing' : ''}`}></div>
+            <div className={`visualizer-bar ${isPlaying ? 'playing' : ''}`}></div>
+          </div>
+          <span>{videoTitle}</span>
+        </div>
       </div>
 
       <div className="player-wrapper" tabIndex={-1} style={isHidden ? {display: "none"} : null}>

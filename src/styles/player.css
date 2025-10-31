@@ -4,10 +4,10 @@
   position: fixed;
   left: 0;
   bottom: 0;
-  padding: 20px 25px;
-  gap: 10px;
+  padding: 18px 25px;
+  gap: 14px;
   border-top-right-radius: 6px;
-  max-width: 770px;
+  max-width: 650px;
 
   /* blur effect styles */
   background-color: rgba(0,0,0, 0.05);
@@ -23,6 +23,22 @@
   display: flex;
   gap: 20px;
 }
+.player-controls > button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+  /* padding: 7px 10px 3px 10px; */
+  padding: 7px 11px;
+  background-color: rgba(239, 239, 239, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.player-controls > button > * {
+  width: 13px;
+  height: 13px;
+}
 .player-controls > button:hover {
   transition: opacity 0.1s ease;
 }
@@ -30,28 +46,50 @@
   opacity: 0.7;
 }
 
-.player-info-and-controls > .video-title {
-  font-weight: 500;
+
+.player-info-and-controls > .video-title-container {
+  font-size: 15px;
   text-shadow: 0 0 5px rgba(0,0,0, 1);
   vertical-align: middle;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.player-info-and-controls > .video-title > span {
-  color: rgb(230, 230, 230);
-  font-weight: 100;
-  font-size: 14px;
-  margin-right: 8px;
+.video-title-container > span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+.visualizer-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+}
+.visualizer-bar {
+  width: 3px;
+  background-color: #fff;
+  border-radius: 2px;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.visualizer-bar.playing {
+  animation-name: bounce;
+}
+.visualizer-bar:nth-child(1) { height: 40%; animation-delay: 0.2s; }
+.visualizer-bar:nth-child(2) { height: 100%; animation-delay: 0s; }
+.visualizer-bar:nth-child(3) { height: 60%; animation-delay: 0.4s; }
 
-.player-controls > button {
-  padding: 5px 10px;
-  background-color: rgba(239, 239, 239, 0.449);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-  text-shadow: 0 0 5px rgba(0,0,0, 1);
-
-  cursor: pointer;
+@keyframes bounce {
+  0%, 100% {
+    transform: scaleY(0.2);
+  }
+  50% {
+    transform: scaleY(1);
+  }
 }
 
 .player-wrapper {
@@ -78,9 +116,9 @@
 
 @media (max-width: 820px) {
   .player-info-and-controls {
-    width: 100vw;
-    border-radius: 0;
+    max-width: unset;
+    right: 0;
     border-top-right-radius: 0;
-    padding: 15px 20px;
+    padding: 18px 20px;
   }
 }
