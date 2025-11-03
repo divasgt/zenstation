@@ -5,6 +5,7 @@
 @import url('./styles/todoList.css');
 @import url('./styles/customThemePopup.css');
 @import url('./styles/tooltip.css');
+@import url('./styles/stickyNote.css');
 
 * {
   font-family: "Space Grotesk", Arial, Helvetica, sans-serif;

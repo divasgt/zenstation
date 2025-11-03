@@ -9,6 +9,7 @@ import "./aurora.css"
 import { IoIosClose } from 'react-icons/io';
 import { FaPlay, FaPause, FaStepBackward, FaStepForward, FaVideo, FaMusic } from 'react-icons/fa';
 import { IoVolumeHigh, IoVolumeMute } from 'react-icons/io5';
+import StickyNote from "./components/StickyNote";
 
 export default function App() {
   const [theme, setTheme] = useState("default")
@@ -27,6 +28,7 @@ export default function App() {
 
   const [isPomodoroShown, setIsPomodoroShown] = useState(false)
   const [isTodoListShown, setIsTodoListShown] = useState(false)
+  const [isStickyNoteShown, setIsStickyNoteShown] = useState(false)
 
 
   // derived variables
@@ -204,10 +206,11 @@ export default function App() {
 
 
     
-    <Header theme={theme} setTheme={setTheme} setShowCustomThemeSection={setShowCustomThemeSection} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
+    <Header theme={theme} setTheme={setTheme} setShowCustomThemeSection={setShowCustomThemeSection} setIsStickyNoteShown={setIsStickyNoteShown} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
 
-    <Pomodoro isPomodoroShown={isPomodoroShown} setIsPomodoroShown={setIsPomodoroShown} />
+    <StickyNote isStickyNoteShown={isStickyNoteShown} setIsStickyNoteShown={setIsStickyNoteShown} />
     <TodoList isTodoListShown={isTodoListShown} setIsTodoListShown={setIsTodoListShown} />
+    <Pomodoro isPomodoroShown={isPomodoroShown} setIsPomodoroShown={setIsPomodoroShown} />
 
     {!ytLinkId && 
     <div className="homepage-info-div">

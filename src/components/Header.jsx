@@ -6,8 +6,17 @@ import { LuAlarmClock } from 'react-icons/lu';
 import { FaHeart } from "react-icons/fa";
 import { RiExpandDiagonalLine } from 'react-icons/ri';
 import { PiArrowsInSimple } from 'react-icons/pi';
+import { LiaStickyNote } from 'react-icons/lia';
 
-export default function Header({ theme, setTheme, setShowCustomThemeSection, setIsPomodoroShown, setIsTodoListShown, setCurrentIndex }) {
+export default function Header({
+  theme,
+  setTheme,
+  setShowCustomThemeSection,
+  setIsStickyNoteShown,
+  setIsPomodoroShown,
+  setIsTodoListShown,
+  setCurrentIndex
+}) {
   const [themesDropdownShown, setThemesDropdownShown] = useState(false)
   const [isFullScreen, setIsFullScreen] = useState(false)
   const [widgetsDropdownShown, setWidgetsDropdownShown] = useState(false)
@@ -33,19 +42,22 @@ export default function Header({ theme, setTheme, setShowCustomThemeSection, set
     
     <nav>
       <ul>
-        <li className="home-nav-item"><button className="home-nav-link" onClick={() => handleThemeClick("default")}>
+        <li className="home-nav-item">
+          <button className="home-nav-link" onClick={() => handleThemeClick("default")}>
             <img src={logoImg} alt="Logo Icon" />
-          </button></li>
+          </button>
+        </li>
         <li className="desktop-nav-item"><button onClick={() => handleThemeClick("lofi")}>Lofi</button></li>
         <li className="desktop-nav-item"><button onClick={() => handleThemeClick("cafe")}>Cafe</button></li>
         <li className="desktop-nav-item"><button onClick={() => handleThemeClick("library")}>Library</button></li>
         <li className="desktop-nav-item"><button onClick={() => handleThemeClick("relax")}>Relax</button></li>
 
-        {/* on clicking below button, pause video if playing and show entering link popup */}
-        <li className="desktop-nav-item"><button onClick={() => {
+        {/* on clicking below button show entering link popup */}
+        <li className="desktop-nav-item">
+          <button onClick={() => {
             setShowCustomThemeSection(prev => !prev)
-          }
-          }>Create my theme</button></li>
+          }}>Create my theme</button>
+        </li>
         
         <li className="mobile-nav-item">
 
@@ -86,6 +98,11 @@ export default function Header({ theme, setTheme, setShowCustomThemeSection, set
             : {}
           }
         >
+          <button className="sticky-note-btn" onClick={() => setIsStickyNoteShown(prev => !prev)}>
+            <LiaStickyNote style={{width: "18px", height: "18px"}} />
+            Sticky Note
+          </button>
+          
           <button className="todo-list-btn" onClick={() => setIsTodoListShown(prev => !prev)}>
             <AiOutlineUnorderedList style={{width: "18px", height: "18px", marginBottom: "1px"}} />
             Todo list
