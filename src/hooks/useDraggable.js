@@ -24,7 +24,7 @@ export function useDraggable(initialPosition = { x: 100, y: 100 }) {
       const handleMouseUp = () => {
         window.removeEventListener('mousemove', handleMouseMove)
         window.removeEventListener('mouseup', handleMouseUp)
-      };
+      }
 
       window.addEventListener('mousemove', handleMouseMove)
       window.addEventListener('mouseup', handleMouseUp)

@@ -1,12 +1,12 @@
 import { useRef, useState, useEffect } from "react"
 import { IoIosClose } from "react-icons/io"
-import { useDraggable } from "../hooks/useDraggable";
+import { useDraggable } from "../hooks/useDraggable"
 
 export default function Pomodoro({isPomodoroShown, setIsPomodoroShown}) {
   const [timer, setTimer] = useState(1500)
   const [isTimerRunning, setIsTimerRunning] = useState(false)
   const intervalIdRef = useRef(null)
-  const { elementRef, handleMouseDown, draggableStyle } = useDraggable({ x: window.innerWidth - 180, y: window.innerHeight - 240 });
+  const { elementRef, handleMouseDown, draggableStyle } = useDraggable({ x: window.innerWidth - 180, y: window.innerHeight - 240 })
 
   function formatTime(timeInSeconds) {
     const hours = Math.floor(timeInSeconds / 3600)
