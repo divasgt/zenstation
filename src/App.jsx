@@ -42,6 +42,8 @@ export default function App() {
 
   // for fetching yt video title
   useEffect(() => {
+    if (!ytLinkId) return
+
     async function fetchVideoTitle(videoId) {
       const url = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`;
       const response = await fetch(url);

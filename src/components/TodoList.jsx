@@ -1,12 +1,14 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { nanoid } from "nanoid"
 import { IoIosClose } from 'react-icons/io';
 import { MdDelete } from "react-icons/md";
+import { useDraggable } from "../hooks/useDraggable";
 
 
 export default function TodoList({isTodoListShown, setIsTodoListShown}) {
   const [todoArray, setTodoArray] = useState([])
   const [todoInput, setTodoInput] = useState("")
+  const { elementRef, handleMouseDown, draggableStyle } = useDraggable({ x:window.innerWidth - 300, y: 70 });
 
   function addTodo() {
     if (todoInput.trim() === "" || todoArray.some(todo => todo.text === todoInput)) {
@@ -47,7 +49,8 @@ export default function TodoList({isTodoListShown, setIsTodoListShown}) {
   ))
 
   return (
-    <div className="todo-list-app" style={!isTodoListShown ? {display: "none"} : {}}>
+    <div ref={elementRef} className="todo-list-app" style={!isTodoListShown ? {display: "none"} : draggableStyle}>
+      <div className="drag-handle" onMouseDown={handleMouseDown}><div className="drag-line"></div></div>
       <button className="close-btn" onClick={() => setIsTodoListShown(false)}>
         <IoIosClose style={{width: "25px", height: "25px"}} />
       </button>

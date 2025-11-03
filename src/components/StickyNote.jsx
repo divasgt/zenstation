@@ -1,18 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { IoIosClose } from "react-icons/io";
+import { useDraggable } from "../hooks/useDraggable";
 
 export default function StickyNote({isStickyNoteShown, setIsStickyNoteShown}) {
   const [noteText, setNoteText] = useState("Type here!")
   const noteRef = useRef(null)
   const [size, setSize] = useState({ width: 180, height: 150 });
+  const { elementRef, handleMouseDown: handleDragMouseDown, draggableStyle } = useDraggable({ x:window.innerWidth - 500, y:70 });
 
+  // used this useEffect, because when using onInput in the contentEditable div, the cursor position always goes to starting of text because of rerender everytime
   useEffect(() => {
     if (noteRef.current && noteText !== noteRef.current.textContent) {
       noteRef.current.textContent = noteText;
     }
   }, [noteText, isStickyNoteShown]); // Also run on isStickyNoteShown to set content when note becomes visible
 
-  const handleMouseDown = (e) => {
+  const handleResizeMouseDown = (e) => {
     e.preventDefault();
     const startX = e.clientX;
     const startY = e.clientY;
@@ -38,7 +41,12 @@ export default function StickyNote({isStickyNoteShown, setIsStickyNoteShown}) {
   };
   
   return (
-    <div className="sticky-note bg-blur-div" style={!isStickyNoteShown ? {display: "none"} : {width: `${size.width}px`, height: `${size.height}px`}}>
+    <div
+      ref={elementRef}
+      className="sticky-note bg-blur-div"
+      style={!isStickyNoteShown ? {display: "none"} : {...draggableStyle, width: `${size.width}px`, height: `${size.height}px`}}
+    >
+      <div className="drag-handle" onMouseDown={handleDragMouseDown}><div className="drag-line"></div></div>
       <button className="close-btn" onClick={() => setIsStickyNoteShown(false)}>
         <IoIosClose style={{width: "25px", height: "25px"}} />
       </button>
@@ -52,7 +60,7 @@ export default function StickyNote({isStickyNoteShown, setIsStickyNoteShown}) {
         // The initial content is now set by the useEffect
       ></div>
       
-      <div className="resize-handle" onMouseDown={handleMouseDown}>
+      <div className="resize-handle" onMouseDown={handleResizeMouseDown}>
         {/* <LuSquareArrowDownRight /> */}
         {/* <LiaExternalLinkSquareAltSolid/> */}
       </div>
