@@ -3,7 +3,9 @@ import { IoIosClose } from "react-icons/io";
 import { useDraggable } from "../hooks/useDraggable";
 
 export default function StickyNote({isStickyNoteShown, setIsStickyNoteShown}) {
-  const [noteText, setNoteText] = useState("Type here!")
+  const stickyNote = JSON.parse(localStorage.getItem("stickyNote") || "{}")
+  
+  const [noteText, setNoteText] = useState(stickyNote?.text || "Type here!")
   const noteRef = useRef(null)
   const [size, setSize] = useState({ width: 180, height: 150 })
   const { elementRef, handleMouseDown: handleDragMouseDown, draggableStyle } = useDraggable({ x:window.innerWidth - 500, y:70 })
@@ -13,6 +15,13 @@ export default function StickyNote({isStickyNoteShown, setIsStickyNoteShown}) {
     if (noteRef.current && noteText !== noteRef.current.textContent) {
       noteRef.current.textContent = noteText
     }
+
+    const timer = setTimeout(() => {
+      // Save the note text to local storage
+      localStorage.setItem("stickyNote", JSON.stringify({text: noteText}))
+    }, 1500)
+
+    return () => clearTimeout(timer)
   }, [noteText, isStickyNoteShown]) // Also run on isStickyNoteShown to set content when note becomes visible
 
   const handleResizeMouseDown = (e) => {
