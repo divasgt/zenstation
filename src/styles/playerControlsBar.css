@@ -115,7 +115,8 @@
   top: 50%;
   left: 50%;
   width: 100vw;
-  height: 56.25vw; /* 16:9 ratio of width */
+  height: 260vw;
+  /* height: 56.25vw; 16:9 ratio of width */
   min-width: 177.78vh; /* 16:9 ratio of height */
   min-height: 100vh;
   transform: translate(-50%, -50%);
