@@ -26,6 +26,11 @@ const themesLinks = {
     "https://www.youtube.com/watch?v=eTeD8DAta4c",
     "https://www.youtube.com/watch?v=V1RPi2MYptM",
   ],
+  anime : [
+    "https://www.youtube.com/watch?v=pNPqQPrcSIo",
+    "https://www.youtube.com/watch?v=ZtJldNkSa3s",
+    "https://www.youtube.com/watch?v=9Iz7vrh8r24",
+  ],
 };
 
 export default themesLinks;
