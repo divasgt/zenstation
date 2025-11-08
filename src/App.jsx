@@ -4,8 +4,7 @@ import themesLinks from "./themes";
 import Pomodoro from "./components/Pomodoro";
 import TodoList from "./components/TodoList";
 import logoImg from "./assets/milky-way_1f30c.png"
-import homepageBgImage from "./assets/night-sky-stars1.jpg"
-import "./aurora.css"
+import "./styles/aurora.css"
 import { IoIosClose } from 'react-icons/io';
 import { FaPlay, FaPause, FaStepBackward, FaStepForward, FaVideo, FaMusic } from 'react-icons/fa';
 import { IoVolumeHigh, IoVolumeMute } from 'react-icons/io5';
