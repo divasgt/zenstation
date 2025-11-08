@@ -218,6 +218,13 @@ button {
   header {
     padding-inline: 15px;
   }
+  .home-nav-link {
+    margin: 0;
+    margin-left: 5px;
+  }
+  header > ul {
+    gap: 20px;
+  }
   .desktop-nav-item {
     display: none;
   }
