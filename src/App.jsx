@@ -207,7 +207,7 @@ export default function App() {
 
 
     
-    <Header theme={theme} setTheme={setTheme} setShowCustomThemeSection={setShowCustomThemeSection} setIsStickyNoteShown={setIsStickyNoteShown} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
+    <Header themesNames={Object.keys(themesLinks)} theme={theme} setTheme={setTheme} setShowCustomThemeSection={setShowCustomThemeSection} setIsStickyNoteShown={setIsStickyNoteShown} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
 
     <StickyNote isStickyNoteShown={isStickyNoteShown} setIsStickyNoteShown={setIsStickyNoteShown} />
     <TodoList isTodoListShown={isTodoListShown} setIsTodoListShown={setIsTodoListShown} />

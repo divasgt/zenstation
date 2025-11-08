@@ -22,7 +22,7 @@ header {
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
 }
 
-header > nav > ul{
+header > ul{
   list-style: none;
   display: flex;
   align-items: center;
@@ -30,7 +30,7 @@ header > nav > ul{
   padding: 0;
 }
 
-header > nav > ul > li > button {
+header > ul > li > button {
   background-color: transparent;
   border: none;
   font-size: inherit;
@@ -42,11 +42,7 @@ header button {
   transition: all 0.1s ease;
 }
 
-.mobile-nav-item {
-  display: none;
-}
-
-nav button:hover {
+ul button:hover {
   opacity: 0.7;
 }
 
@@ -153,7 +149,9 @@ button {
   background-color: rgba(255,255,255, 0.1);
 }
 
-
+.mobile-items {
+  display: none;
+}
 .themes-menu-container {
   position: relative;
 }
@@ -168,6 +166,7 @@ button {
   text-shadow: 0 0 5px rgba(0,0,0, 1);
 }
 .themes-dropdown {
+  list-style: none;
   visibility: hidden;
   scale: 95%;
   opacity: 0;
@@ -188,16 +187,17 @@ button {
   backdrop-filter: blur(20px);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
 }
-.themes-dropdown > button {
+.themes-dropdown button {
   padding: 8px;
   border-radius: 6px;
   text-align: left;
   font-size: 15px;
+  width: 100%;
 }
-.themes-dropdown > button:hover {
+.themes-dropdown button:hover {
   background-color: rgba(255,255,255, 0.1);
 }
-.themes-dropdown > div {
+.themes-dropdown div {
   width: 100%;
   border: none;
   border-top: 1px solid rgba(255,255,255, 0.1);
@@ -221,7 +221,7 @@ button {
   .desktop-nav-item {
     display: none;
   }
-  .mobile-nav-item {
+  .mobile-items {
     display: block;
   }
   header > nav > ul {

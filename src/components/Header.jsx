@@ -9,6 +9,7 @@ import { PiArrowsInSimple } from 'react-icons/pi';
 import { LiaStickyNote } from 'react-icons/lia';
 
 export default function Header({
+  themesNames,
   theme,
   setTheme,
   setShowCustomThemeSection,
@@ -40,45 +41,56 @@ export default function Header({
     { theme!==("default")  && <div className="header-bg-blur-div"></div> }
     
     
-    <nav>
-      <ul>
-        <li className="home-nav-item">
-          <button className="home-nav-link" onClick={() => handleThemeClick("default")}>
-            <img src={logoImg} alt="Logo Icon" />
+    <ul>
+      <li className="home-nav-item">
+        <button className="home-nav-link" onClick={() => handleThemeClick("default")}>
+          <img src={logoImg} alt="Logo Icon" />
+        </button>
+      </li>
+
+      {/* theme name buttons */}
+      {themesNames.slice(1).map(themeName => (
+        <li key={themeName} className="desktop-nav-item">
+          <button onClick={(e) => handleThemeClick(e.currentTarget.textContent)}>
+            {themeName.charAt(0).toUpperCase() + themeName.slice(1)}
           </button>
         </li>
-        <li className="desktop-nav-item"><button onClick={() => handleThemeClick("lofi")}>Lofi</button></li>
-        <li className="desktop-nav-item"><button onClick={() => handleThemeClick("cafe")}>Cafe</button></li>
-        <li className="desktop-nav-item"><button onClick={() => handleThemeClick("library")}>Library</button></li>
-        <li className="desktop-nav-item"><button onClick={() => handleThemeClick("relax")}>Relax</button></li>
+      ))}
 
-        {/* on clicking below button show entering link popup */}
-        <li className="desktop-nav-item">
-          <button onClick={() => {
-            setShowCustomThemeSection(prev => !prev)
-          }}>Create my theme</button>
-        </li>
-        
-        <li className="mobile-nav-item">
+      <li className="desktop-nav-item">
+        <button onClick={() => {
+          setShowCustomThemeSection(prev => !prev)
+        }}>Create my theme</button>
+      </li>
+      
+      
+      <li className="mobile-items">
+        <div className="themes-menu-container" onBlur={() => setTimeout(() => setThemesDropdownShown(false), 150)}>
+          <button className="themes-btn" onClick={() => setThemesDropdownShown(prev => !prev)}>
+            <span>Themes</span>
+            <IoIosArrowDown style={{width: "14px", height: "14px"}} />
+          </button>
 
-          <div className="themes-menu-container" onBlur={() => setTimeout(() => setThemesDropdownShown(false), 150)}>
-            <button className="themes-btn" onClick={() => setThemesDropdownShown(prev => !prev)}>
-              <span>Themes</span>
-              <IoIosArrowDown style={{width: "14px", height: "14px"}} />
-            </button>
+          <ul className="themes-dropdown" style={themesDropdownShown ? {visibility: "visible", opacity: "100%", scale: "100%"} : {}}>
+            {/* theme name buttons */}
+            {themesNames.slice(1).map(themeName => (
+              <li key={themeName} className="mobile-nav-item">
+                <button onClick={(e) => handleThemeClick(e.currentTarget.textContent)}>
+                  {themeName.charAt(0).toUpperCase() + themeName.slice(1)}
+                </button>
+              </li>
+            ))}
 
-            <div className="themes-dropdown" style={themesDropdownShown ? {visibility: "visible", opacity: "100%", scale: "100%"} : {}}>
-              <button onClick={() => handleThemeClick("lofi")}>Lofi</button>
-              <button onClick={() => handleThemeClick("cafe")}>Cafe</button>
-              <button onClick={() => handleThemeClick("library")}>Library</button>
-              <button onClick={() => handleThemeClick("relax")}>Relax</button>
-              <div></div>
+            <div></div>
+            <li className="mobile-nav-item">
               <button onClick={() => {setShowCustomThemeSection(prev => !prev); setThemesDropdownShown(false)}}>Create my theme</button>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </nav>
+            </li>
+          </ul>
+
+        </div>
+      </li>
+
+    </ul>
 
 
     <div className="header-right-div">
