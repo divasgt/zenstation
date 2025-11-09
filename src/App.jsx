@@ -5,9 +5,7 @@ import Pomodoro from "./components/Pomodoro"
 import TodoList from "./components/TodoList"
 import logoImg from "./assets/milky-way_1f30c.png"
 import "./styles/aurora.css"
-import { IoIosClose } from 'react-icons/io'
-import { FaPlay, FaPause, FaStepBackward, FaStepForward, FaVideo, FaMusic } from 'react-icons/fa'
-import { IoVolumeHigh, IoVolumeMute } from 'react-icons/io5'
+import PlayerControlsBar from "./components/PlayerControlsBar"
 import StickyNote from "./components/StickyNote"
 import Settings from "./components/Settings"
 import CustomizeThemePopup from "./components/CustomizeThemePopup"
@@ -153,7 +151,6 @@ export default function App() {
 
   function togglePlay() {
     if (!playerRef.current) return
-
     if (playerRef.current.getPlayerState() === window.YT.PlayerState.PLAYING) {
       playerRef.current.pauseVideo()
     } else {
@@ -165,7 +162,6 @@ export default function App() {
 
   function toggleMute() {
     if (!playerRef.current) return
-
     if (playerRef.current.isMuted()) {
       playerRef.current.unMute()
     } else {
@@ -266,38 +262,17 @@ export default function App() {
 
     {ytLinkId && (
     <>
-      <div className={`player-info-and-controls ${settings["show-on-hover-bottom-bar"] && "show-on-hover"}`}>
-        <div className="player-controls">
-          <button onClick={() => handleNextOrPrevious("previous")} aria-label="Previous track" >
-            <FaStepBackward />
-          </button>
-          <button onClick={togglePlay} aria-label={isPlaying ? "Pause" : "Play"} >
-            {isPlaying ? <FaPause /> : <FaPlay />}
-          </button>
-          <button onClick={() => handleNextOrPrevious("next")} aria-label="Next track" >
-            <FaStepForward />
-          </button>
-          
-          <button onClick={toggleMute} aria-label={isMuted ? "Unmute" : "Mute"} >
-            {isMuted ? <IoVolumeMute style={{width: "18px", height: "18px"}} /> : <IoVolumeHigh style={{width: "18px", height: "18px"}} />}
-          </button>
-          <button onClick={() => setIsHidden(prev => !prev)} style={{fontSize: "14px"}}>
-            {isHidden
-              ? <><FaVideo />Video Mode</>
-              : <><FaMusic />Audio Mode</>
-            }
-          </button>
-        </div>
-
-        <div className="video-title-container">
-          <div className="visualizer-container">
-            <div className={`visualizer-bar ${isPlaying ? 'playing' : ''}`}></div>
-            <div className={`visualizer-bar ${isPlaying ? 'playing' : ''}`}></div>
-            <div className={`visualizer-bar ${isPlaying ? 'playing' : ''}`}></div>
-          </div>
-          <span>{videoTitle}</span>
-        </div>
-      </div>
+      <PlayerControlsBar
+        isPlaying={isPlaying}
+        isMuted={isMuted}
+        isHidden={isHidden}
+        videoTitle={videoTitle}
+        settings={settings}
+        handleNextOrPrevious={handleNextOrPrevious}
+        togglePlay={togglePlay}
+        toggleMute={toggleMute}
+        setIsHidden={setIsHidden}
+      />
 
       <div className="player-wrapper" tabIndex={-1} style={isHidden ? {display: "none"} : null}>
         <div tabIndex={-1} id="player"></div>
