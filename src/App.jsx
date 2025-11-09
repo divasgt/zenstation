@@ -1,19 +1,20 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react"
 import Header from "./components/Header"
-import themesLinks from "./themes";
-import Pomodoro from "./components/Pomodoro";
-import TodoList from "./components/TodoList";
+import themesLinks from "./themes"
+import Pomodoro from "./components/Pomodoro"
+import TodoList from "./components/TodoList"
 import logoImg from "./assets/milky-way_1f30c.png"
 import "./styles/aurora.css"
-import { IoIosClose } from 'react-icons/io';
-import { FaPlay, FaPause, FaStepBackward, FaStepForward, FaVideo, FaMusic } from 'react-icons/fa';
-import { IoVolumeHigh, IoVolumeMute } from 'react-icons/io5';
-import StickyNote from "./components/StickyNote";
-import Settings from "./components/Settings";
+import { IoIosClose } from 'react-icons/io'
+import { FaPlay, FaPause, FaStepBackward, FaStepForward, FaVideo, FaMusic } from 'react-icons/fa'
+import { IoVolumeHigh, IoVolumeMute } from 'react-icons/io5'
+import StickyNote from "./components/StickyNote"
+import Settings from "./components/Settings"
+import CustomizeThemePopup from "./components/CustomizeThemePopup"
 
 export default function App() {
   const [theme, setTheme] = useState("default")
-  const [showCustomThemeSection, setShowCustomThemeSection] = useState(false)
+  const [showCustomizeThemePopup, setShowCustomizeThemePopup] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [inputText, setInputText] = useState("")
   const [ytLink, setYtLink] = useState(randomVideo)
@@ -215,7 +216,7 @@ export default function App() {
       themesNames={Object.keys(themesLinks)}
       theme={theme}
       setTheme={setTheme}
-      setShowCustomThemeSection={setShowCustomThemeSection}
+      setShowCustomizeThemePopup={setShowCustomizeThemePopup}
       setCurrentIndex={setCurrentIndex}
       setIsStickyNoteShown={setIsStickyNoteShown}
       setIsPomodoroShown={setIsPomodoroShown}
@@ -251,65 +252,16 @@ export default function App() {
     </div>
     }
     
-    {showCustomThemeSection &&
-    <div className="custom-theme-section">
-      <button className="close-btn" onClick={() => setShowCustomThemeSection(prev => !prev)} >
-        <IoIosClose style={{width: "30px", height: "30px"}} />
-      </button>
-
-      <div className="yt-link-div">
-        <p>Enter any youtube video link</p>
-
-        <div className="input-and-btn-div">
-          <input type="text" placeholder="Enter a youtube link" value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key==="Enter") {
-                setYtLink(inputText)
-                setTheme("custom")
-                setCurrentIndex(0)
-              }
-            }}
-          />
-          <button
-            className="go-btn" onClick={() => {
-              setYtLink(inputText)
-              setTheme("custom")
-              setCurrentIndex(0)
-          }}
-          >Go</button>
-        </div>
-      </div>
-
-      <div className="custom-bg-div">
-        <p>Upload Custom background Image</p>
-
-        <div className="input-and-btn-div">
-          <input ref={customBgInputRef} type="file" name="custom-bg-input" id="custom-bg-input" accept="image/*" onChange={event => {
-            const fileReader = new FileReader()
-            fileReader.readAsDataURL(event.target.files[0])
-            // when reading as data url is complete, the onload event is triggered, and fileReader.result contains the dataURL
-
-            // onload property should be assigned a function, it itself should not be called by ()
-            fileReader.onload = () => {
-              setCustomBg(fileReader.result)
-              // also hide playing video
-              setIsHidden(true)
-            }
-          }}/>
-
-          {customBg &&
-          <button className="reset-bg-btn" onClick={() => {
-            setCustomBg("")
-            setIsHidden(false)
-            customBgInputRef.current.value = ""
-          }}>Reset Background</button>
-          }
-        </div>
-      </div>
-      {/* <p>or Enter image link</p>
-      <input type="text" /> */}
-    </div>
+    {showCustomizeThemePopup &&
+      <CustomizeThemePopup
+        setShowCustomizeThemePopup={setShowCustomizeThemePopup}
+        setYtLink={setYtLink}
+        setTheme={setTheme}
+        setCurrentIndex={setCurrentIndex}
+        setCustomBg={setCustomBg}
+        setIsHidden={setIsHidden}
+        customBg={customBg}
+      />
     }
 
     {ytLinkId && (

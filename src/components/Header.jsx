@@ -14,7 +14,7 @@ export default function Header({
   themesNames,
   theme,
   setTheme,
-  setShowCustomThemeSection,
+  setShowCustomizeThemePopup,
   setCurrentIndex,
   setIsStickyNoteShown,
   setIsPomodoroShown,
@@ -63,7 +63,7 @@ export default function Header({
 
       <li className="desktop-nav-item">
         <button onClick={() => {
-          setShowCustomThemeSection(prev => !prev)
+          setShowCustomizeThemePopup(prev => !prev)
         }}>Create my theme</button>
       </li>
       
@@ -87,7 +87,7 @@ export default function Header({
 
             <div></div>
             <li className="mobile-nav-item">
-              <button onClick={() => {setShowCustomThemeSection(prev => !prev); setThemesDropdownShown(false)}}>Create my theme</button>
+              <button onClick={() => {setShowCustomizeThemePopup(prev => !prev); setThemesDropdownShown(false)}}>Create my theme</button>
             </li>
           </ul>
 
