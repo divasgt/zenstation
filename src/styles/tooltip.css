@@ -23,7 +23,7 @@
   transition: opacity 0.2s ease;
 }
 
-.about-btn:hover + .about-tooltip, .fullscreen-btn:hover +.fullscreen-tooltip, .pomodoro-btn:hover + .pomodoro-tooltip, .todo-list-btn:hover + .todo-list-tooltip {
+.settings-btn:hover + .settings-tooltip, .fullscreen-btn:hover +.fullscreen-tooltip, .pomodoro-btn:hover + .pomodoro-tooltip, .todo-list-btn:hover + .todo-list-tooltip {
   visibility: visible;
   opacity: 1;
 }

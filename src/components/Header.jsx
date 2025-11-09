@@ -1,22 +1,26 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import logoImg from "../assets/milky-way_1f30c.png"
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { IoIosArrowDown } from "react-icons/io";
-import { LuAlarmClock } from 'react-icons/lu';
-import { FaHeart } from "react-icons/fa";
+import { LuAlarmClock, LuSettings2 } from 'react-icons/lu';
+// import { FaHeart } from "react-icons/fa";
 import { RiExpandDiagonalLine } from 'react-icons/ri';
 import { PiArrowsInSimple } from 'react-icons/pi';
 import { LiaStickyNote } from 'react-icons/lia';
+// import { BsThreeDotsVertical } from "react-icons/bs";
 
 export default function Header({
+  showOnHover,
   themesNames,
   theme,
   setTheme,
   setShowCustomThemeSection,
+  setCurrentIndex,
   setIsStickyNoteShown,
   setIsPomodoroShown,
   setIsTodoListShown,
-  setCurrentIndex
+  isSettingsShown,
+  setIsSettingsShown,
 }) {
   const [themesDropdownShown, setThemesDropdownShown] = useState(false)
   const [isFullScreen, setIsFullScreen] = useState(false)
@@ -37,9 +41,9 @@ export default function Header({
   }
   
   return (
-  <header>
-    { theme!==("default")  && <div className="header-bg-blur-div"></div> }
+  <header className={showOnHover ? "show-on-hover" : ""}>
     
+    { theme!==("default")  && <div className={`header-bg-blur-div`}></div> }
     
     <ul>
       <li className="home-nav-item">
@@ -130,7 +134,7 @@ export default function Header({
       <div className="icon-container">
         <button onClick={toggleFullScreen} className="fullscreen-btn">
           {isFullScreen ?
-            <PiArrowsInSimple style={{width: "20px", height: "20px", marginTop: "1px"}} /> :
+            <PiArrowsInSimple style={{width: "19px", height: "19px"}} /> :
             <RiExpandDiagonalLine style={{width: "18px", height: "18px"}} />
           }
         </button>
@@ -138,10 +142,13 @@ export default function Header({
       </div>
 
       <div className="icon-container">
-        <button className="about-btn">
-          <FaHeart style={{width: "14px", height: "14px"}} />
+        <button
+          onClick={() => setIsSettingsShown(!isSettingsShown)}
+          className="settings-btn"
+        >
+          <LuSettings2 style={{width: "18px", height: "18px"}} />
         </button>
-        <div className="tooltip about-tooltip">About</div>
+        {!isSettingsShown && <div className="tooltip settings-tooltip">Settings</div>}
       </div>
       
     </div>

@@ -6,6 +6,7 @@
 @import url('./styles/customThemePopup.css');
 @import url('./styles/tooltip.css');
 @import url('./styles/stickyNote.css');
+@import url('./styles/settings.css');
 
 * {
   font-family: "Space Grotesk", Arial, Helvetica, sans-serif;
@@ -58,4 +59,13 @@ body {
   .drag-line {
     opacity: 0.4;
   }
+}
+
+.show-on-hover {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.show-on-hover:hover {
+  opacity: 1;
 }

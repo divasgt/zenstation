@@ -9,6 +9,7 @@ import { IoIosClose } from 'react-icons/io';
 import { FaPlay, FaPause, FaStepBackward, FaStepForward, FaVideo, FaMusic } from 'react-icons/fa';
 import { IoVolumeHigh, IoVolumeMute } from 'react-icons/io5';
 import StickyNote from "./components/StickyNote";
+import Settings from "./components/Settings";
 
 export default function App() {
   const [theme, setTheme] = useState("default")
@@ -28,6 +29,11 @@ export default function App() {
   const [isPomodoroShown, setIsPomodoroShown] = useState(false)
   const [isTodoListShown, setIsTodoListShown] = useState(false)
   const [isStickyNoteShown, setIsStickyNoteShown] = useState(false)
+  const [isSettingsShown, setIsSettingsShown] = useState(false)
+  const [settings, setSettings] = useState(JSON.parse(localStorage.getItem("settings")) || {
+    "show-on-hover-header": false,
+    "show-on-hover-bottom-bar": false,
+  })
 
 
   // derived variables
@@ -140,7 +146,6 @@ export default function App() {
   //   if (customBg) document.body.style.backgroundImage=`url(${customBg})`
   // }, [customBg])
 
-
   function randomVideo() {
     return ""
   }
@@ -205,13 +210,38 @@ export default function App() {
     }></div>
 
 
+    <Header
+      showOnHover={settings['show-on-hover-header']}
+      themesNames={Object.keys(themesLinks)}
+      theme={theme}
+      setTheme={setTheme}
+      setShowCustomThemeSection={setShowCustomThemeSection}
+      setCurrentIndex={setCurrentIndex}
+      setIsStickyNoteShown={setIsStickyNoteShown}
+      setIsPomodoroShown={setIsPomodoroShown}
+      setIsTodoListShown={setIsTodoListShown}
+      isSettingsShown={isSettingsShown}
+      setIsSettingsShown={setIsSettingsShown}
+    />
 
-    
-    <Header themesNames={Object.keys(themesLinks)} theme={theme} setTheme={setTheme} setShowCustomThemeSection={setShowCustomThemeSection} setIsStickyNoteShown={setIsStickyNoteShown} setIsPomodoroShown={setIsPomodoroShown} setCurrentIndex={setCurrentIndex} setIsTodoListShown={setIsTodoListShown} />
-
-    <StickyNote isStickyNoteShown={isStickyNoteShown} setIsStickyNoteShown={setIsStickyNoteShown} />
-    <TodoList isTodoListShown={isTodoListShown} setIsTodoListShown={setIsTodoListShown} />
-    <Pomodoro isPomodoroShown={isPomodoroShown} setIsPomodoroShown={setIsPomodoroShown} />
+    <StickyNote
+      isStickyNoteShown={isStickyNoteShown}
+      setIsStickyNoteShown={setIsStickyNoteShown}
+    />
+    <TodoList
+      isTodoListShown={isTodoListShown}
+      setIsTodoListShown={setIsTodoListShown}
+    />
+    <Pomodoro
+      isPomodoroShown={isPomodoroShown}
+      setIsPomodoroShown={setIsPomodoroShown}
+    />
+    <Settings
+      settings={settings}
+      setSettings={setSettings}
+      isSettingsShown={isSettingsShown}
+      setIsSettingsShown={setIsSettingsShown}
+    />
 
     {!ytLinkId && 
     <div className="homepage-info-div">
@@ -284,7 +314,7 @@ export default function App() {
 
     {ytLinkId && (
     <>
-      <div className="player-info-and-controls">
+      <div className={`player-info-and-controls ${settings["show-on-hover-bottom-bar"] && "show-on-hover"}`}>
         <div className="player-controls">
           <button onClick={() => handleNextOrPrevious("previous")} aria-label="Previous track" >
             <FaStepBackward />
