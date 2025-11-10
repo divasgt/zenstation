@@ -1,5 +1,4 @@
 import { useState } from "react"
-import logoImg from "../assets/milky-way_1f30c.png"
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { IoIosArrowDown } from "react-icons/io";
 import { LuAlarmClock, LuSettings2 } from 'react-icons/lu';
@@ -48,7 +47,7 @@ export default function Header({
     <ul>
       <li className="home-nav-item">
         <button className="home-nav-link" onClick={() => handleThemeClick("default")}>
-          <img src={logoImg} alt="Logo Icon" />
+          <img src="/milky-way_1f30c.png" alt="Logo Icon" />
         </button>
       </li>
 
