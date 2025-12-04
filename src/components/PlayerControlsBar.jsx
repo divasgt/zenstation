@@ -16,11 +16,11 @@ export default function PlayerControlsBar({
     <>
       <div className={`player-info-and-controls ${settings["show-on-hover-bottom-bar"] && "show-on-hover"}`}>
         <div className="player-controls">
-          <button onClick={() => handleNextOrPrevious("previous")} aria-label="Previous track" >
-            <FaStepBackward />
-          </button>
           <button onClick={togglePlay} aria-label={isPlaying ? "Pause" : "Play"} >
             {isPlaying ? <FaPause /> : <FaPlay />}
+          </button>
+          <button onClick={() => handleNextOrPrevious("previous")} aria-label="Previous track" >
+            <FaStepBackward />
           </button>
           <button onClick={() => handleNextOrPrevious("next")} aria-label="Next track" >
             <FaStepForward />
