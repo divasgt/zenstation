@@ -1,10 +1,11 @@
 .settings-popup {
+  font-size: 14px;
+  
   position: fixed;
   top: 50px;
   right: 10px;
   z-index: 20;
-  padding: 14px 16px;
-  padding-bottom: 18px;
+  padding: 14px 16px 5px;
   border-radius: 6px;
 
   /* blur effect styles */
@@ -16,15 +17,15 @@
   text-shadow: 0 0 5px rgba(0,0,0, 0.7);
 }
 
-.settings-popup p {
+.settings-popup h2 {
+  font-size: 20px;
+  font-weight: normal;
   text-align: center;
   margin: 0;
   margin-bottom: 15px;
 }
 
 .settings-div {
-  font-size: 14px;
-
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -41,3 +42,46 @@
   width: 14px;
   height: 14px;
 }
+
+.separater-div {
+  width: 100%;
+  border: none;
+  border-top: 1px solid rgba(255,255,255, 0.15);
+  margin-block: 20px;
+}
+
+.about-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+/* .about-div > p {
+  margin: 0;
+} */
+.about-div > .buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  /* margin-bottom: 10px; */
+}
+
+.share-btn, .coffee-btn {
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.hover-fade {
+  color: white;
+  transition: all 100ms;
+}
+.hover-fade:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* a {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+} */
