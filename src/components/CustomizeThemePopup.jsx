@@ -1,9 +1,10 @@
 import { useState, useRef } from 'react'
 import { IoIosClose } from 'react-icons/io'
+import getIdfromLink from '../utils/getIdFromLink'
 
 export default function CustomizeThemePopup({
   setShowCustomizeThemePopup,
-  setYtLink,
+  setYtLinkId,
   setTheme,
   setCurrentIndex,
   setCustomBg,
@@ -11,7 +12,20 @@ export default function CustomizeThemePopup({
   customBg,
 }) {
   const [inputText, setInputText] = useState("")
+  const [ytLinkError, setYtLinkError] = useState(null)
   const customBgInputRef = useRef(null)
+
+  function handleGoClick() {
+    const newId = getIdfromLink(inputText)
+    if (newId) {
+      setYtLinkId(newId)
+      setTheme("custom")
+      setCurrentIndex(0)
+      setYtLinkError(null)
+    } else {
+      setYtLinkError("Invalid YouTube link. Please check and try again.")
+    }
+  }
 
   return (
     <div className="customize-theme-popup">
@@ -26,21 +40,14 @@ export default function CustomizeThemePopup({
           <input type="text" placeholder="Enter a youtube link" value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             onKeyDown={(e) => {
-              if (e.key==="Enter") {
-                setYtLink(inputText)
-                setTheme("custom")
-                setCurrentIndex(0)
-              }
+              if (e.key === "Enter") handleGoClick()
             }}
           />
-          <button
-            className="go-btn" onClick={() => {
-              setYtLink(inputText)
-              setTheme("custom")
-              setCurrentIndex(0)
-          }}
-          >Go</button>
+          <button className="go-btn" onClick={handleGoClick}>
+            Go
+          </button>
         </div>
+        {ytLinkError && <p className="error-message">{ytLinkError}</p>}
       </div>
 
       <div className="custom-bg-div">

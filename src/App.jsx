@@ -8,15 +8,16 @@ import PlayerControlsBar from "./components/PlayerControlsBar"
 import StickyNote from "./components/StickyNote"
 import Settings from "./components/Settings"
 import CustomizeThemePopup from "./components/CustomizeThemePopup"
+import getIdfromLink from "./utils/getIdFromLink"
 
 export default function App() {
   const [theme, setTheme] = useState("default")
   const [showCustomizeThemePopup, setShowCustomizeThemePopup] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [inputText, setInputText] = useState("")
-  const [ytLink, setYtLink] = useState(randomVideo)
+  // const [inputText, setInputText] = useState("")
+  const [ytLinkId, setYtLinkId] = useState(getIdfromLink(randomVideo()))
   const [customBg, setCustomBg] = useState(null)
-  const customBgInputRef = useRef(null)
+  // const customBgInputRef = useRef(null)
 
   const playerRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -33,15 +34,6 @@ export default function App() {
     "show-on-hover-bottom-bar": false,
   })
 
-
-  // derived variables
-  let ytLinkId = "";
-  if (ytLink.includes("?v=")) {
-    ytLinkId =  ytLink.split("?v=")[1].substring(0,11)
-  } else if (ytLink.includes(".be/")) {
-    ytLinkId = ytLink.split(".be/")[1].substring(0,11)
-  }
-  // console.log(ytLinkId)
 
   // for fetching yt video title
   useEffect(() => {
@@ -129,13 +121,15 @@ export default function App() {
   }, [ytLinkId])
 
   
-  // change ytLink when theme changes
+  // change ytLinkId when theme changes
   useEffect(() => {
     if (theme==="default") {
-      setYtLink(randomVideo)
-      ytLinkId = 0
+      setYtLinkId(getIdfromLink(randomVideo()))
     }
-    else if (theme!=="custom") setYtLink(themesLinks[theme][currentIndex])
+    else if (theme!=="custom") {
+      const newId = getIdfromLink(themesLinks[theme][currentIndex]);
+      setYtLinkId(newId);
+    }
   },[theme, currentIndex])
 
 
@@ -250,7 +244,7 @@ export default function App() {
     {showCustomizeThemePopup &&
       <CustomizeThemePopup
         setShowCustomizeThemePopup={setShowCustomizeThemePopup}
-        setYtLink={setYtLink}
+        setYtLinkId={setYtLinkId}
         setTheme={setTheme}
         setCurrentIndex={setCurrentIndex}
         setCustomBg={setCustomBg}
