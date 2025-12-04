@@ -5,7 +5,7 @@
   top: 50px;
   right: 10px;
   z-index: 20;
-  padding: 14px 16px 5px;
+  padding: 14px 16px 18px;
   border-radius: 6px;
 
   /* blur effect styles */
@@ -47,7 +47,7 @@
   width: 100%;
   border: none;
   border-top: 1px solid rgba(255,255,255, 0.15);
-  margin-block: 20px;
+  margin: 20px 0 15px;
 }
 
 .about-div {
@@ -55,7 +55,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0;
+  gap: 10px;
 }
 /* .about-div > p {
   margin: 0;
@@ -64,7 +64,6 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  /* margin-bottom: 10px; */
 }
 
 .share-btn, .coffee-btn {
@@ -78,6 +77,10 @@
 }
 .hover-fade:hover {
   color: rgba(255, 255, 255, 0.8);
+}
+
+.about-div > p {
+  margin: 0;
 }
 
 /* a {
