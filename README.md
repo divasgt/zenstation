@@ -1,4 +1,4 @@
-# <img src="./src/assets/milky-way_1f30c.png" alt="Logo Icon" width="32" style="vertical-align: bottom"/> Zen Station  
+# <img src="./public/milky-way_1f30c.png" alt="Logo Icon" width="32" style="vertical-align: bottom"/> Zen Station  
 
 Zen Station is a multipurpose web app designed to give you a virtual environment to help you **focus, study, relax, or just chill**.  
 It combines calming background videos of various themes with various widgets like **Pomodoro timer** and **Todo list**, creating a perfect space.  
